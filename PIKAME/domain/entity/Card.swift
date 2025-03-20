@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+/**
+ Représente une carte sérializable
+ */
+struct Card : Codable {
+    public var uniqueId : UUID
+    public var name : String
+    public var description : String
+    public var type : Int
+    public var value : Double
+    public var img : String
+    public var rarity : Int
+}

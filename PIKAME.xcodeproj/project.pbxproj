@@ -13,6 +13,7 @@
 		0A19C3A72D8C69260042E5F0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0A19C3A62D8C69260042E5F0 /* Base */; };
 		0A19C3A92D8C69270042E5F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A19C3A82D8C69270042E5F0 /* Assets.xcassets */; };
 		0A19C3AC2D8C69270042E5F0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0A19C3AB2D8C69270042E5F0 /* Base */; };
+		0A19C3B82D8C6C570042E5F0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A19C3B72D8C6C570042E5F0 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0A19C3A82D8C69270042E5F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A19C3AB2D8C69270042E5F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A19C3AD2D8C69270042E5F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A19C3B72D8C6C570042E5F0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		0A19C39E2D8C69260042E5F0 /* PIKAME */ = {
 			isa = PBXGroup;
 			children = (
+				0A19C3B32D8C6B6A0042E5F0 /* domain */,
 				0A19C39F2D8C69260042E5F0 /* AppDelegate.swift */,
 				0A19C3A12D8C69260042E5F0 /* SceneDelegate.swift */,
 				0A19C3A32D8C69260042E5F0 /* ViewController.swift */,
@@ -65,6 +68,22 @@
 				0A19C3AD2D8C69270042E5F0 /* Info.plist */,
 			);
 			path = PIKAME;
+			sourceTree = "<group>";
+		};
+		0A19C3B32D8C6B6A0042E5F0 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				0A19C3B42D8C6BFC0042E5F0 /* entity */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		0A19C3B42D8C6BFC0042E5F0 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				0A19C3B72D8C6C570042E5F0 /* Card.swift */,
+			);
+			path = entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +160,7 @@
 				0A19C3A42D8C69260042E5F0 /* ViewController.swift in Sources */,
 				0A19C3A02D8C69260042E5F0 /* AppDelegate.swift in Sources */,
 				0A19C3A22D8C69260042E5F0 /* SceneDelegate.swift in Sources */,
+				0A19C3B82D8C6C570042E5F0 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
