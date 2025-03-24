@@ -16,17 +16,33 @@ class JsonCardRepository : ICardRepository {
     }
         
     func readAll() async -> [Card] {
-        let files = try! FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: [])
-        let decoder = JSONDecoder()
-        return files.map { url in
-            let data = try! Data(contentsOf: url)
-            return try! decoder.decode(Card.self, from: data)
+        do {
+            guard let bundleFolder = Bundle.main.url(forResource: "cards", withExtension: "bundle") else {
+                print("❌ Impossible de trouver le dossier dans le bundle.")
+                return []
+            }
+
+            let files = try FileManager.default.contentsOfDirectory(at: bundleFolder, includingPropertiesForKeys: nil, options: [])
+
+            let jsonFiles = files.filter { $0.pathExtension == "json" }
+
+            let decoder = JSONDecoder()
+
+            return try jsonFiles.compactMap { url in
+                let data = try Data(contentsOf: url)
+                return try decoder.decode(Card.self, from: data)
+            }
+        } catch {
+            print("❌ Erreur lors de la lecture des fichiers dans le bundle : \(error)")
+            return []
         }
     }
     
     func create(_ model: Card) async -> Bool {
         let encoder = JSONEncoder()
         let data = try! encoder.encode(model)
+        // print string content
+        print(String(data: data, encoding: .utf8)!)
         let file = getFile(for: model)
         try! data.write(to: file)
         return true

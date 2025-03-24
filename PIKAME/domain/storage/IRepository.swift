@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol IRepository {
-    associatedtype Model
-    associatedtype Identifier
+protocol IRepository<T,I> {
+    associatedtype T
+    associatedtype I
 
-    func create(_ model: Model) async -> Bool
-    func read(by id: Identifier) async -> Model?
-    func update(_ model: Model) async -> Model?
-    func delete(by id: Identifier) async -> Bool
+    func create(_ model: T) async -> Bool
+    func read(by id: I) async -> T?
+    func update(_ model: T) async -> T?
+    func delete(by id: I) async -> Bool
 }

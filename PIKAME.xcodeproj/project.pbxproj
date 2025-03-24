@@ -19,6 +19,7 @@
 		9933637E2D91833E00C25DB1 /* CardSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933637A2D91833E00C25DB1 /* CardSerializer.swift */; };
 		9933637F2D91833E00C25DB1 /* JsonCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933637C2D91833E00C25DB1 /* JsonCardRepository.swift */; };
 		99AB4E502D91917D002D76DA /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AB4E4F2D919173002D76DA /* CardService.swift */; };
+		99AB4E552D91A9E4002D76DA /* cards.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 99AB4E542D91A9E4002D76DA /* cards.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		9933637A2D91833E00C25DB1 /* CardSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSerializer.swift; sourceTree = "<group>"; };
 		9933637C2D91833E00C25DB1 /* JsonCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonCardRepository.swift; sourceTree = "<group>"; };
 		99AB4E4F2D919173002D76DA /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
+		99AB4E542D91A9E4002D76DA /* cards.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = cards.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				0A19C3A82D8C69270042E5F0 /* Assets.xcassets */,
 				0A19C3AA2D8C69270042E5F0 /* LaunchScreen.storyboard */,
 				0A19C3AD2D8C69270042E5F0 /* Info.plist */,
+				99AB4E542D91A9E4002D76DA /* cards.bundle */,
 			);
 			path = PIKAME;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A19C3A92D8C69270042E5F0 /* Assets.xcassets in Resources */,
+				99AB4E552D91A9E4002D76DA /* cards.bundle in Resources */,
 				0A19C3AC2D8C69270042E5F0 /* Base in Resources */,
 				0A19C3A72D8C69260042E5F0 /* Base in Resources */,
 			);
@@ -366,11 +370,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PIKAME/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PIKAME;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -393,11 +400,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PIKAME/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PIKAME;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
