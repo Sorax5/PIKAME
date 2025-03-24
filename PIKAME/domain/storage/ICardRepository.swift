@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol ICardRepository : IRepository {
+    associatedtype Model = Card
+    associatedtype Identifier = UUID
+    func readAll() async -> [Model]
+}
