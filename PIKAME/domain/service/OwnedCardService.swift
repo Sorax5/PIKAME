@@ -25,5 +25,24 @@ class OwnedCardService {
     func getOwnedCard(by id: UUID) -> OwnedCard? {
         return ownedCards.first { $0.getCard().uniqueId == id }
     }
+    
+    func create(ownedCard: OwnedCard) {
+        Task {
+            do {
+                let hasCreate = await repository.create(ownedCard)
+                if !hasCreate{
+                    throw NSError(domain: "OwnedCardService", code: 1, userInfo: [NSLocalizedDescriptionKey: "Error creating owned card"])
+                }
+                ownedCards.append(ownedCard)
+            } catch {
+                print("Error creating owned card \(error)")
+            }
+        }
+    }
+    
+    func getAll() -> [OwnedCard] {
+        return ownedCards
+    }
+    
 }
     

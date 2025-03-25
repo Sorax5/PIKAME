@@ -18,7 +18,7 @@ class JsonCardRepository : ICardRepository {
     func readAll() async -> [Card] {
         do {
             guard let bundleFolder = Bundle.main.url(forResource: "cards", withExtension: "bundle") else {
-                print("❌ Impossible de trouver le dossier dans le bundle.")
+                print("Impossible de trouver le dossier dans le bundle.")
                 return []
             }
 
@@ -33,7 +33,7 @@ class JsonCardRepository : ICardRepository {
                 return try decoder.decode(Card.self, from: data)
             }
         } catch {
-            print("❌ Erreur lors de la lecture des fichiers dans le bundle : \(error)")
+            print("Erreur lors de la lecture des fichiers dans le bundle : \(error)")
             return []
         }
     }

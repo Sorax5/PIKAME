@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private var cardService : CardService? = nil
+    private var ownedCardService : OwnedCardService? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,20 +19,21 @@ class ViewController: UIViewController {
         let cardRepository = JsonCardRepository(folder: localFolder)
         cardService = CardService(repository: cardRepository)
         
-        let card = Card(uniqueId: UUID.init(), name: "Matteo", description: "Rauch", type: 1, value: 1.0, img: "img", rarity: 1)
-        
-        Task {
-            do {
-                try await cardService?.create(card: card)
-                print("✅ Carte créée")
-            }
-            catch {
-                print("❌ Erreur lors de la création de la carte : \(error)")
-            }
-        }
-        
         cardService?.loadAll()
-    
+        
+        let ownedCardFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let ownedCardRepository = JsonOwnedCardRepository(cardService: cardService!, saveFolder: ownedCardFolder)
+        
+        self.ownedCardService = OwnedCardService(repository: ownedCardRepository)
+        self.ownedCardService?.loadAll()
+        
+        let ownedCardAmount = ownedCardService?.getAll().count
+        print("Owned card amount: \(ownedCardAmount)")
+        
+        let card = cardService?.getCard(by: UUID(uuidString: "C076B2A8-79DA-4EF5-A310-3D70A69EDE43")!)
+        let tryOwned = OwnedCard(card: card!)
+        
+        self.ownedCardService?.create(ownedCard: tryOwned)
     }
 
 

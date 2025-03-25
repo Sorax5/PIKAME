@@ -16,7 +16,6 @@
 		0A19C3B82D8C6C570042E5F0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A19C3B72D8C6C570042E5F0 /* Card.swift */; };
 		993363782D9180AA00C25DB1 /* ICardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993363752D9180AA00C25DB1 /* ICardRepository.swift */; };
 		993363792D9180AA00C25DB1 /* IRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993363762D9180AA00C25DB1 /* IRepository.swift */; };
-		9933637E2D91833E00C25DB1 /* CardSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933637A2D91833E00C25DB1 /* CardSerializer.swift */; };
 		9933637F2D91833E00C25DB1 /* JsonCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933637C2D91833E00C25DB1 /* JsonCardRepository.swift */; };
 		99AB4E502D91917D002D76DA /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AB4E4F2D919173002D76DA /* CardService.swift */; };
 		99AB4E552D91A9E4002D76DA /* cards.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 99AB4E542D91A9E4002D76DA /* cards.bundle */; };
@@ -40,7 +39,6 @@
 		0A19C3B72D8C6C570042E5F0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		993363752D9180AA00C25DB1 /* ICardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICardRepository.swift; sourceTree = "<group>"; };
 		993363762D9180AA00C25DB1 /* IRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRepository.swift; sourceTree = "<group>"; };
-		9933637A2D91833E00C25DB1 /* CardSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSerializer.swift; sourceTree = "<group>"; };
 		9933637C2D91833E00C25DB1 /* JsonCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonCardRepository.swift; sourceTree = "<group>"; };
 		99AB4E4F2D919173002D76DA /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
 		99AB4E542D91A9E4002D76DA /* cards.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = cards.bundle; sourceTree = "<group>"; };
@@ -127,19 +125,10 @@
 			path = storage;
 			sourceTree = "<group>";
 		};
-		9933637B2D91833E00C25DB1 /* serialize */ = {
-			isa = PBXGroup;
-			children = (
-				9933637A2D91833E00C25DB1 /* CardSerializer.swift */,
-			);
-			path = serialize;
-			sourceTree = "<group>";
-		};
 		9933637D2D91833E00C25DB1 /* storage */ = {
 			isa = PBXGroup;
 			children = (
 				99B4EDCD2D91E3520046259E /* JsonOwnedCardRepository.swift */,
-				9933637B2D91833E00C25DB1 /* serialize */,
 				9933637C2D91833E00C25DB1 /* JsonCardRepository.swift */,
 			);
 			path = storage;
@@ -242,7 +231,6 @@
 				0A19C3A22D8C69260042E5F0 /* SceneDelegate.swift in Sources */,
 				99B4EDCA2D91E29F0046259E /* OwnedCardService.swift in Sources */,
 				99B4EDCC2D91E3040046259E /* IOwnedCardRepository.swift in Sources */,
-				9933637E2D91833E00C25DB1 /* CardSerializer.swift in Sources */,
 				9933637F2D91833E00C25DB1 /* JsonCardRepository.swift in Sources */,
 				99AB4E502D91917D002D76DA /* CardService.swift in Sources */,
 				99B4EDC22D91DFCF0046259E /* Player.swift in Sources */,

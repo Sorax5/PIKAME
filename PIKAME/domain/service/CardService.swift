@@ -22,12 +22,6 @@ class CardService {
         }
     }
     
-    func reloadAll() {
-        Task {
-            cards = await repository.readAll()
-        }
-    }
-    
     func getCard(by id: UUID) -> Card? {
         return cards.first { $0.uniqueId == id }
     }
@@ -35,7 +29,5 @@ class CardService {
     func create(card: Card) async throws {
         try await repository.create(card)
     }
-        
-    
 }
 

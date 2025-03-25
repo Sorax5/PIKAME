@@ -15,6 +15,10 @@ class JsonOwnedCardRepository : IOwnedCardRepository {
     init(cardService: CardService, saveFolder: URL) {
         self.cardService = cardService
         self.saveFile = saveFolder.appendingPathComponent("owned_cards.json")
+        // create file
+        if !FileManager.default.fileExists(atPath: saveFile.path) {
+            FileManager.default.createFile(atPath: saveFile.path, contents: Data(), attributes: nil)
+        }
     }
     
     func readAll() async -> [OwnedCard] {
@@ -75,7 +79,7 @@ class JsonOwnedCardRepository : IOwnedCardRepository {
     
     func delete(by id: UUID) async -> Bool {
         do {
-            var ownedCards = await readAll()
+            let ownedCards = await readAll()
             let newCards = ownedCards.filter { $0.getCard().uniqueId != id }
             if newCards.count == ownedCards.count { return false }
 
