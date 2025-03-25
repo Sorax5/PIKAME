@@ -16,10 +16,8 @@ class OwnedCardService {
         self.ownedCards = []
     }
     
-    func loadAll() {
-        Task {
-            ownedCards = await repository.readAll()
-        }
+    func loadAll() async {
+        ownedCards = await repository.readAll()
     }
     
     func getOwnedCard(by id: UUID) -> OwnedCard? {

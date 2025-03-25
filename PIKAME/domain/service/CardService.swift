@@ -15,11 +15,8 @@ class CardService {
         self.repository = repository
     }
     
-    func loadAll() {
-        Task {
-            cards = await repository.readAll()
-            print(cards)
-        }
+    func loadAll() async {
+        cards = await repository.readAll()
     }
     
     func getCard(by id: UUID) -> Card? {
@@ -27,7 +24,11 @@ class CardService {
     }
     
     func create(card: Card) async throws {
-        try await repository.create(card)
+        let hasCreate = await repository.create(card)
+        if !hasCreate {
+            throw NSError(domain: "CardService", code: 1, userInfo: [NSLocalizedDescriptionKey: "Error creating card"])
+        }
+        cards.append(card)
     }
 }
 

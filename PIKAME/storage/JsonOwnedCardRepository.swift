@@ -7,36 +7,48 @@
 
 import Foundation
 
+
+
 /// Si problème de perf a réecris car pour chaque opération on relit tout le fichier ce qui est pas opti
-class JsonOwnedCardRepository : IOwnedCardRepository {
+class JsonOwnedCardRepository: IOwnedCardRepository {
     private var cardService: CardService
-    private var saveFile: URL
+    private var saveFolder: URL
     
     init(cardService: CardService, saveFolder: URL) {
         self.cardService = cardService
-        self.saveFile = saveFolder.appendingPathComponent("owned_cards.json")
-        // create file
-        if !FileManager.default.fileExists(atPath: saveFile.path) {
-            FileManager.default.createFile(atPath: saveFile.path, contents: Data(), attributes: nil)
-        }
-    }
-    
-    func readAll() async -> [OwnedCard] {
+        self.saveFolder = saveFolder.appendingPathComponent("owned_cards/")
+        
         do {
-            guard FileManager.default.fileExists(atPath: saveFile.path) else {
-                print("Owned cards file not found")
-                return []
+            if !FileManager.default.fileExists(atPath: self.saveFolder.path) {
+                print("Owned card folder not found, creating it...")
+                try FileManager.default.createDirectory(at: self.saveFolder, withIntermediateDirectories: true, attributes: nil)
+                print("Owned card folder created at \(self.saveFolder.path)")
             }
-            
-            let jsonData = try Data(contentsOf: saveFile)
-            let decoder = JSONDecoder()
-            let dtos = try decoder.decode([OwnedCardDTO].self, from: jsonData)
-            
-            return try dtos.map { dto in
-                return try OwnedCard.fromDTO(dto, using: cardService)
+            else{
+                print("Owned card folder found at \(self.saveFolder.path)")
             }
         }
         catch {
+            print("Error while creating owned card folder: \(error)")
+        }
+    }
+    
+    func readAll() -> [OwnedCard] {
+        do {
+            let fileURLs = try FileManager.default.contentsOfDirectory(at: saveFolder, includingPropertiesForKeys: nil)
+            
+            var ownedCards: [OwnedCard] = []
+            
+            for fileURL in fileURLs {
+                let jsonData = try Data(contentsOf: fileURL)
+                let decoder = JSONDecoder()
+                let dto = try decoder.decode(OwnedCardDTO.self, from: jsonData)
+                let card = try OwnedCard.fromDTO(dto, using: cardService)
+                ownedCards.append(card)
+            }
+            
+            return ownedCards
+        } catch {
             print("Error while reading owned cards: \(error)")
             return []
         }
@@ -44,60 +56,66 @@ class JsonOwnedCardRepository : IOwnedCardRepository {
     
     func create(_ model: OwnedCard) async -> Bool {
         do {
-            var ownedCards = await readAll()
-            ownedCards.append(model)
+            let fileURL = saveFolder.appendingPathComponent("\(model.getCard().uniqueId).json")
             
-            let dtos = ownedCards.map { $0.toDTO() }
-            try save(dtos)
+            let dto = model.toDTO()
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            let jsonData = try encoder.encode(dto)
+            
+            try jsonData.write(to: fileURL, options: .atomic)
+            print("Owned card saved to \(fileURL.path)")
             return true
-        }
-        catch{
+        } catch {
             print("Error while creating owned card: \(error)")
             return false
         }
     }
     
     func read(by id: UUID) async -> OwnedCard? {
-        let ownedCards = await readAll()
-        return ownedCards.first { $0.getCard().uniqueId == id }
+        let fileURL = saveFolder.appendingPathComponent("\(id).json")
+        
+        do {
+            let jsonData = try Data(contentsOf: fileURL)
+            let decoder = JSONDecoder()
+            let dto = try decoder.decode(OwnedCardDTO.self, from: jsonData)
+            return try OwnedCard.fromDTO(dto, using: cardService)
+        } catch {
+            print("Error while reading owned card by id: \(error)")
+            return nil
+        }
     }
     
     func update(_ model: OwnedCard) async -> OwnedCard? {
+        let fileURL = saveFolder.appendingPathComponent("\(model.getCard().uniqueId).json")
+        
         do {
-            var ownedCards = await readAll()
-            if let index = ownedCards.firstIndex(where: { $0.getCard().uniqueId == model.getCard().uniqueId }) {
-                ownedCards[index] = model
-                let dtos = ownedCards.map { $0.toDTO() }
-                try save(dtos)
-                return model
-            }
+            let dto = model.toDTO()
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            let jsonData = try encoder.encode(dto)
+            
+            try jsonData.write(to: fileURL, options: .atomic)
+            print("Owned card updated at \(fileURL.path)")
+            return model
         } catch {
             print("Error while updating owned card: \(error)")
+            return nil
         }
-        return nil
     }
     
     func delete(by id: UUID) async -> Bool {
+        let fileURL = saveFolder.appendingPathComponent("\(id).json")
+        
         do {
-            let ownedCards = await readAll()
-            let newCards = ownedCards.filter { $0.getCard().uniqueId != id }
-            if newCards.count == ownedCards.count { return false }
-
-            let dtos = newCards.map { $0.toDTO() }
-            try save(dtos)
+            try FileManager.default.removeItem(at: fileURL)
+            print("Owned card deleted from \(fileURL.path)")
             return true
         } catch {
             print("Error while deleting owned card: \(error)")
             return false
         }
     }
-    
-    private func save(_ dtos: [OwnedCardDTO]) throws {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let jsonData = try encoder.encode(dtos)
-        try jsonData.write(to: saveFile, options: .atomic)
-        print("✅ Données sauvegardées dans \(saveFile.path)")
-    }
 }
+
     
