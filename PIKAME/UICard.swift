@@ -16,5 +16,47 @@ class UICard: UIView {
         // Drawing code
     }
     */
+    
+    @IBOutlet weak var nameLabel:UILabel!
+    @IBOutlet weak var descriptionLabel:UILabel!
+    @IBOutlet weak var valueLabel:UILabel!
+    @IBOutlet weak var image:UIImageView!
+    @IBOutlet weak var typeLabel:UILabel!
+    @IBOutlet weak var boundsView:UIView!
+    
+    var loaded : Bool = false
+    var loadedData : Card?
+    
+    override init(frame: CGRect){
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder){
+        super.init(coder: coder)
+    }
+    
 
+    func loadCard(data: Card){
+        let viewFromXib = Bundle.main.loadNibNamed("UICard", owner: self, options:nil)![0] as! UIView
+        viewFromXib.frame = self.bounds
+        
+        loadedData = data
+        
+        nameLabel.text = data.name
+        descriptionLabel.text = data.description
+        valueLabel.text = String(data.value)
+        
+        
+        if data.type == 1 {
+            typeLabel.text = "Equipement"
+        } else {
+            typeLabel.text = "Heros"
+        }
+        
+        loaded = true
+        
+        
+        addSubview(viewFromXib)
+    }
+    
 }
