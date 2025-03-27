@@ -30,6 +30,8 @@
 		99B4EDCA2D91E29F0046259E /* OwnedCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4EDC92D91E29A0046259E /* OwnedCardService.swift */; };
 		99B4EDCC2D91E3040046259E /* IOwnedCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4EDCB2D91E2FD0046259E /* IOwnedCardRepository.swift */; };
 		99B4EDCE2D91E3590046259E /* JsonOwnedCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4EDCD2D91E3520046259E /* JsonOwnedCardRepository.swift */; };
+		99BB76292D95FFE0009C696A /* PikameNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BB76272D95FFE0009C696A /* PikameNavigationViewController.swift */; };
+		99BB762A2D95FFE0009C696A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BB76282D95FFE0009C696A /* SplashViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		99B4EDC92D91E29A0046259E /* OwnedCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCardService.swift; sourceTree = "<group>"; };
 		99B4EDCB2D91E2FD0046259E /* IOwnedCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOwnedCardRepository.swift; sourceTree = "<group>"; };
 		99B4EDCD2D91E3520046259E /* JsonOwnedCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonOwnedCardRepository.swift; sourceTree = "<group>"; };
+		99BB76272D95FFE0009C696A /* PikameNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PikameNavigationViewController.swift; sourceTree = "<group>"; };
+		99BB76282D95FFE0009C696A /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,8 @@
 		0AE439EC2D9590F70005936C /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				99BB76272D95FFE0009C696A /* PikameNavigationViewController.swift */,
+				99BB76282D95FFE0009C696A /* SplashViewController.swift */,
 				0A19C3A32D8C69260042E5F0 /* ViewController.swift */,
 				0AE439F72D9594CC0005936C /* OwnedCardsCollectionViewController.swift */,
 			);
@@ -260,6 +266,8 @@
 				0AE439EA2D9587400005936C /* Application.swift in Sources */,
 				993363782D9180AA00C25DB1 /* ICardRepository.swift in Sources */,
 				993363792D9180AA00C25DB1 /* IRepository.swift in Sources */,
+				99BB76292D95FFE0009C696A /* PikameNavigationViewController.swift in Sources */,
+				99BB762A2D95FFE0009C696A /* SplashViewController.swift in Sources */,
 				0A19C3A02D8C69260042E5F0 /* AppDelegate.swift in Sources */,
 				0A19C3A22D8C69260042E5F0 /* SceneDelegate.swift in Sources */,
 				2D6B87862D9409EC001CEABC /* UICard.swift in Sources */,

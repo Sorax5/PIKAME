@@ -7,11 +7,15 @@
 
 import Foundation
 
+typealias DataLoaded = () -> Void
+
 class Application {
     static let INSTANCE = Application()
     
     private let cardService : CardService
     private let ownedCardService : OwnedCardService
+    
+    public var OnDataLoaded : [DataLoaded] = []
     
     init(){
         let localFolder : URL = Bundle.main.bundleURL
@@ -22,12 +26,20 @@ class Application {
         let ownedCardRepository = JsonOwnedCardRepository(cardService: cardService, saveFolder: ownedCardFolder)
 
         self.ownedCardService = OwnedCardService(repository: ownedCardRepository)
-        
+    }
+    
+    public func loadAll() {
         Task {
             await self.cardService.loadAll()
             await self.ownedCardService.loadAll()
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.OnDataLoaded.forEach { $0() }
+            }
         }
     }
+        
     
     public func getCardService() -> CardService {
         return self.cardService
