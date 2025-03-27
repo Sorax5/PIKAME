@@ -25,7 +25,7 @@ class UICard: UIView {
     @IBOutlet weak var boundsView:UIView!
     
     var loaded : Bool = false
-    var loadedData : Card?
+    var loadedData : CardDecorator?
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -36,18 +36,18 @@ class UICard: UIView {
     }
     
 
-    func loadCard(data: Card){
+    func loadCard(data: CardDecorator){
         let viewFromXib = Bundle.main.loadNibNamed("UICard", owner: self, options:nil)![0] as! UIView
         viewFromXib.frame = self.bounds
         
         loadedData = data
         
-        nameLabel.text = data.name
-        descriptionLabel.text = data.description
-        valueLabel.text = String(data.value)
+        nameLabel.text = data.getName()
+        descriptionLabel.text = data.getDescription()
+        valueLabel.text = String(data.getValue())
         
         
-        if data.type == 1 {
+        if data.getType() == 1 {
             typeLabel.text = "Equipement"
         } else {
             typeLabel.text = "Heros"
