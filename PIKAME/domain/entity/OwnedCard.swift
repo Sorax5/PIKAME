@@ -55,12 +55,12 @@ class OwnedCard : NSObject, CardDecorator {
     }
     
     func toDTO() -> OwnedCardDTO {
-        return OwnedCardDTO(cardI: card.getUniqueId(), level: level)
+        return OwnedCardDTO(cardID: card.getUniqueId(), level: level)
     }
     
     static func fromDTO(_ dto: OwnedCardDTO, using cardService: CardService) throws -> OwnedCard {
-        guard let foundCard = cardService.getCard(by: dto.cardI) else {
-            throw NSError(domain: "OwnedCard", code: 1, userInfo: [NSLocalizedDescriptionKey: "Card not found for UUID \(dto.cardI)"])
+        guard let foundCard = cardService.getCard(by: dto.cardID) else {
+            throw NSError(domain: "OwnedCard", code: 1, userInfo: [NSLocalizedDescriptionKey: "Card not found for UUID \(dto.cardID)"])
         }
         return OwnedCard(card: foundCard, level: dto.level)
     }

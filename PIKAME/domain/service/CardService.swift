@@ -7,9 +7,13 @@
 
 import Foundation
 
-class CardService {
+typealias CardLoadAction = ([Card]) -> Void
+
+class CardService : NSObject {
     private var repository : any ICardRepository
     private var cards : [Card] = []
+    
+    public var OnCardLoaded : [CardLoadAction] = []
     
     init(repository: some ICardRepository) {
         self.repository = repository
@@ -17,6 +21,10 @@ class CardService {
     
     func loadAll() async {
         cards = await repository.readAll()
+        
+        OnCardLoaded.forEach {
+            $0(cards)
+        }
     }
     
     func getCard(by id: UUID) -> Card? {

@@ -7,9 +7,13 @@
 
 import Foundation
 
+typealias OwnedCardLoadAction = ([OwnedCard]) -> Void
+
 class OwnedCardService {
     private var repository: any IOwnedCardRepository
     private var ownedCards: [OwnedCard]
+    
+    public var OnOwnCardLoaded : [OwnedCardLoadAction] = []
     
     init(repository: any IOwnedCardRepository) {
         self.repository = repository
@@ -18,6 +22,9 @@ class OwnedCardService {
     
     func loadAll() async {
         ownedCards = await repository.readAll()
+        OnOwnCardLoaded.forEach {
+            $0(ownedCards)
+        }
     }
     
     func getOwnedCard(by id: UUID) -> OwnedCard? {
