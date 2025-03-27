@@ -7,7 +7,8 @@
 
 import Foundation
 
-class OwnedCard : NSObject {
+class OwnedCard : NSObject, CardDecorator {
+    
     private var card : Card
     
     @objc dynamic var level: Int = 1
@@ -25,8 +26,36 @@ class OwnedCard : NSObject {
         return card
     }
     
+    func getUniqueId() -> UUID {
+        return card.getUniqueId()
+    }
+    
+    func getName() -> String {
+        return card.getName()
+    }
+    
+    func getDescription() -> String {
+        return card.getDescription()
+    }
+    
+    func getType() -> Int {
+        return card.getType()
+    }
+    
+    func getValue() -> Double {
+        return card.getValue()
+    }
+    
+    func getRarity() -> Int {
+        return card.getRarity()
+    }
+    
+    func getImg() -> String {
+        return card.getImg()
+    }
+    
     func toDTO() -> OwnedCardDTO {
-        return OwnedCardDTO(cardI: card.uniqueId, level: level)
+        return OwnedCardDTO(cardI: card.getUniqueId(), level: level)
     }
     
     static func fromDTO(_ dto: OwnedCardDTO, using cardService: CardService) throws -> OwnedCard {

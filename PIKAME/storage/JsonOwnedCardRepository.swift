@@ -56,7 +56,7 @@ class JsonOwnedCardRepository: IOwnedCardRepository {
     
     func create(_ model: OwnedCard) async -> Bool {
         do {
-            let fileURL = saveFolder.appendingPathComponent("\(model.getCard().uniqueId).json")
+            let fileURL = saveFolder.appendingPathComponent("\(model.getUniqueId()).json")
             
             let dto = model.toDTO()
             let encoder = JSONEncoder()
@@ -87,7 +87,7 @@ class JsonOwnedCardRepository: IOwnedCardRepository {
     }
     
     func update(_ model: OwnedCard) async -> OwnedCard? {
-        let fileURL = saveFolder.appendingPathComponent("\(model.getCard().uniqueId).json")
+        let fileURL = saveFolder.appendingPathComponent("\(model.getUniqueId()).json")
         
         do {
             let dto = model.toDTO()

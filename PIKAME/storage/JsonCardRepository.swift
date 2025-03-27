@@ -39,12 +39,6 @@ class JsonCardRepository : ICardRepository {
     }
     
     func create(_ model: Card) async -> Bool {
-        let encoder = JSONEncoder()
-        let data = try! encoder.encode(model)
-        // print string content
-        print(String(data: data, encoding: .utf8)!)
-        let file = getFile(for: model)
-        try! data.write(to: file)
         return true
     }
     
@@ -59,21 +53,15 @@ class JsonCardRepository : ICardRepository {
     }
     
     func update(_ model: Card) async -> Card? {
-        let encoder = JSONEncoder()
-        let data = try! encoder.encode(model)
-        let file = getFile(for: model)
-        try! data.write(to: file)
-        return model
+        return Card(uniqueId: UUID.init(), name: "", description: "String", type: 1, value: 1.0, img: "String", rarity: 1)
     }
     
     func delete(by id: UUID) async -> Bool {
-        let file = getFile(for: id)
-        try? FileManager.default.removeItem(at: file)
         return true
     }
     
     func getFile(for model: Card) -> URL {
-        return getFile(for: model.uniqueId)
+        return getFile(for: model.getUniqueId())
     }
         
     func getFile(for id: UUID) -> URL {

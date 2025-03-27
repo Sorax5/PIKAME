@@ -14,6 +14,7 @@
 		0A19C3A92D8C69270042E5F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A19C3A82D8C69270042E5F0 /* Assets.xcassets */; };
 		0A19C3AC2D8C69270042E5F0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0A19C3AB2D8C69270042E5F0 /* Base */; };
 		0A19C3B82D8C6C570042E5F0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A19C3B72D8C6C570042E5F0 /* Card.swift */; };
+		0AE439E82D9581150005936C /* CardDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE439E72D9581150005936C /* CardDecorator.swift */; };
 		2D6B87862D9409EC001CEABC /* UICard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6B87852D9409EC001CEABC /* UICard.swift */; };
 		2D6B87882D9409FE001CEABC /* UICard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6B87872D9409FE001CEABC /* UICard.xib */; };
 		993363782D9180AA00C25DB1 /* ICardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993363752D9180AA00C25DB1 /* ICardRepository.swift */; };
@@ -39,6 +40,7 @@
 		0A19C3AB2D8C69270042E5F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A19C3AD2D8C69270042E5F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A19C3B72D8C6C570042E5F0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		0AE439E72D9581150005936C /* CardDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDecorator.swift; sourceTree = "<group>"; };
 		2D6B87852D9409EC001CEABC /* UICard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICard.swift; sourceTree = "<group>"; };
 		2D6B87872D9409FE001CEABC /* UICard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UICard.xib; sourceTree = "<group>"; };
 		993363752D9180AA00C25DB1 /* ICardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICardRepository.swift; sourceTree = "<group>"; };
@@ -84,14 +86,13 @@
 		0A19C39E2D8C69260042E5F0 /* PIKAME */ = {
 			isa = PBXGroup;
 			children = (
+				0AE439E62D957BB30005936C /* ui */,
 				9933637D2D91833E00C25DB1 /* storage */,
 				0A19C3B32D8C6B6A0042E5F0 /* domain */,
 				0A19C39F2D8C69260042E5F0 /* AppDelegate.swift */,
 				0A19C3A12D8C69260042E5F0 /* SceneDelegate.swift */,
 				0A19C3A32D8C69260042E5F0 /* ViewController.swift */,
 				0A19C3A52D8C69260042E5F0 /* Main.storyboard */,
-				2D6B87852D9409EC001CEABC /* UICard.swift */,
-				2D6B87872D9409FE001CEABC /* UICard.xib */,
 				0A19C3A82D8C69270042E5F0 /* Assets.xcassets */,
 				0A19C3AA2D8C69270042E5F0 /* LaunchScreen.storyboard */,
 				0A19C3AD2D8C69270042E5F0 /* Info.plist */,
@@ -117,8 +118,18 @@
 				99B4EDC42D91DFF70046259E /* OwnedCard.swift */,
 				99B4EDC12D91DFCC0046259E /* Player.swift */,
 				0A19C3B72D8C6C570042E5F0 /* Card.swift */,
+				0AE439E72D9581150005936C /* CardDecorator.swift */,
 			);
 			path = entity;
+			sourceTree = "<group>";
+		};
+		0AE439E62D957BB30005936C /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				2D6B87852D9409EC001CEABC /* UICard.swift */,
+				2D6B87872D9409FE001CEABC /* UICard.xib */,
+			);
+			path = ui;
 			sourceTree = "<group>";
 		};
 		993363772D9180AA00C25DB1 /* storage */ = {
@@ -241,6 +252,7 @@
 				99B4EDCC2D91E3040046259E /* IOwnedCardRepository.swift in Sources */,
 				9933637F2D91833E00C25DB1 /* JsonCardRepository.swift in Sources */,
 				99AB4E502D91917D002D76DA /* CardService.swift in Sources */,
+				0AE439E82D9581150005936C /* CardDecorator.swift in Sources */,
 				99B4EDC22D91DFCF0046259E /* Player.swift in Sources */,
 				0A19C3B82D8C6C570042E5F0 /* Card.swift in Sources */,
 				99B4EDCE2D91E3590046259E /* JsonOwnedCardRepository.swift in Sources */,

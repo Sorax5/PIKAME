@@ -20,7 +20,7 @@ class CardService {
     }
     
     func getCard(by id: UUID) -> Card? {
-        return cards.first { $0.uniqueId == id }
+        return cards.first { $0.getUniqueId() == id }
     }
     
     func create(card: Card) async throws {

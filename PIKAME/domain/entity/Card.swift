@@ -10,12 +10,50 @@ import Foundation
 /**
  Représente une carte sérializable
  */
-struct Card : Codable {
-    public var uniqueId : UUID
-    public var name : String
-    public var description : String
-    public var type : Int
-    public var value : Double
-    public var img : String
-    public var rarity : Int
+class Card : Codable, CardDecorator {
+    private var uniqueId : UUID
+    private var name : String
+    private var description : String
+    private var type : Int
+    private var value : Double
+    private var img : String
+    private var rarity : Int
+    
+    init(uniqueId: UUID, name: String, description: String, type: Int, value: Double, img: String, rarity: Int) {
+        self.uniqueId = uniqueId
+        self.name = name
+        self.description = description
+        self.type = type
+        self.value = value
+        self.img = img
+        self.rarity = rarity
+    }
+    
+    func getUniqueId() -> UUID {
+        return uniqueId
+    }
+    
+    func getName() -> String {
+        return name
+    }
+    
+    func getDescription() -> String {
+        return description
+    }
+    
+    func getType() -> Int {
+        return type
+    }
+    
+    func getValue() -> Double {
+        return value
+    }
+    
+    func getRarity() -> Int {
+        return rarity
+    }
+    
+    func getImg() -> String {
+        return img
+    }
 }

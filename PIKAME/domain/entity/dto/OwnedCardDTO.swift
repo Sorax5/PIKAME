@@ -8,11 +8,11 @@
 import Foundation
 
 struct OwnedCardDTO : Codable {
-    let cardI: UUID
+    let cardID: UUID
     let level: Int
     
     enum CodingKeys: String, CodingKey {
-        case cardI = "card"
+        case cardID = "card"
         case level = "level"
     }
 }

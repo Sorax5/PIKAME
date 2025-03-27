@@ -33,10 +33,10 @@ class ViewController: UIViewController {
             let ownedCardAmount = self.ownedCardService?.getAll().count
             print("Owned card amount: \(ownedCardAmount)")
 
-            /*if let card = cardService?.getCard(by: UUID(uuidString: "C076B2A8-79DA-4EF5-A310-3D70A69EDE43")!) {
+            if let card = cardService?.getCard(by: UUID(uuidString: "C076B2A8-79DA-4EF5-A310-3D70A69EDE43")!) {
                 let tryOwned = OwnedCard(card: card)
                 self.ownedCardService?.create(ownedCard: tryOwned)
-            }*/
+            }
         }
 
     }
