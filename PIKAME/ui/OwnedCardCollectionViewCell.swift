@@ -13,6 +13,8 @@ class OwnedCardCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var desc: UILabel!
     
+    @IBOutlet weak var image: UIImageView!
+    
     private var card: OwnedCard?
     
     override func awakeFromNib() {
@@ -24,6 +26,10 @@ class OwnedCardCollectionViewCell: UICollectionViewCell {
         self.card = card
         name.text = card.getName()
         desc.text = card.getDescription()
+        
+        let imgUI = UIImage(data: card.getImg(), scale: UIScreen.main.scale)
+        
+        image.image = imgUI
     }
     
     public func getCard() -> OwnedCard?{
