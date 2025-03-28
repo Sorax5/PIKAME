@@ -19,13 +19,18 @@ class OwnedCardDataViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
         if let ownedCard = card {
             name.text = ownedCard.getName()
             desc.text = ownedCard.getDescription()
             type.text = String(ownedCard.getType())
             value.text = String(ownedCard.getValue())
-            image.image = UIImage(data: ownedCard.getImg())
+            
+            let imgUi = UIImage(data: ownedCard.getImg(), scale: UIScreen.main.scale)
+            image.image = imgUi
+            
+            
         }
             
     }

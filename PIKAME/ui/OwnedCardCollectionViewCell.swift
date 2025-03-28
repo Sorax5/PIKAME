@@ -29,4 +29,5 @@ class OwnedCardCollectionViewCell: UICollectionViewCell {
     public func getCard() -> OwnedCard?{
         return card
     }
+
 }
