@@ -32,6 +32,9 @@
 		99B4EDCE2D91E3590046259E /* JsonOwnedCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4EDCD2D91E3520046259E /* JsonOwnedCardRepository.swift */; };
 		99BB76292D95FFE0009C696A /* PikameNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BB76272D95FFE0009C696A /* PikameNavigationViewController.swift */; };
 		99BB762A2D95FFE0009C696A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BB76282D95FFE0009C696A /* SplashViewController.swift */; };
+		99BB762D2D96B209009C696A /* OwnedCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99BB762C2D96B209009C696A /* OwnedCardCollectionViewCell.xib */; };
+		99BB762E2D96B209009C696A /* OwnedCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BB762B2D96B209009C696A /* OwnedCardCollectionViewCell.swift */; };
+		99BB76302D96D931009C696A /* OwnedCardDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BB762F2D96D931009C696A /* OwnedCardDataViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +65,9 @@
 		99B4EDCD2D91E3520046259E /* JsonOwnedCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonOwnedCardRepository.swift; sourceTree = "<group>"; };
 		99BB76272D95FFE0009C696A /* PikameNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PikameNavigationViewController.swift; sourceTree = "<group>"; };
 		99BB76282D95FFE0009C696A /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		99BB762B2D96B209009C696A /* OwnedCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		99BB762C2D96B209009C696A /* OwnedCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OwnedCardCollectionViewCell.xib; sourceTree = "<group>"; };
+		99BB762F2D96D931009C696A /* OwnedCardDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCardDataViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,8 @@
 				0AE439EC2D9590F70005936C /* controller */,
 				2D6B87852D9409EC001CEABC /* UICard.swift */,
 				2D6B87872D9409FE001CEABC /* UICard.xib */,
+				99BB762B2D96B209009C696A /* OwnedCardCollectionViewCell.swift */,
+				99BB762C2D96B209009C696A /* OwnedCardCollectionViewCell.xib */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -148,6 +156,7 @@
 				99BB76282D95FFE0009C696A /* SplashViewController.swift */,
 				0A19C3A32D8C69260042E5F0 /* ViewController.swift */,
 				0AE439F72D9594CC0005936C /* OwnedCardsCollectionViewController.swift */,
+				99BB762F2D96D931009C696A /* OwnedCardDataViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -248,6 +257,7 @@
 			files = (
 				0A19C3A92D8C69270042E5F0 /* Assets.xcassets in Resources */,
 				99AB4E552D91A9E4002D76DA /* cards.bundle in Resources */,
+				99BB762D2D96B209009C696A /* OwnedCardCollectionViewCell.xib in Resources */,
 				0A19C3AC2D8C69270042E5F0 /* Base in Resources */,
 				2D6B87882D9409FE001CEABC /* UICard.xib in Resources */,
 				0A19C3A72D8C69260042E5F0 /* Base in Resources */,
@@ -261,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99BB76302D96D931009C696A /* OwnedCardDataViewController.swift in Sources */,
 				0A19C3A42D8C69260042E5F0 /* ViewController.swift in Sources */,
 				99B4EDC52D91DFFB0046259E /* OwnedCard.swift in Sources */,
 				0AE439EA2D9587400005936C /* Application.swift in Sources */,
@@ -275,6 +286,7 @@
 				99B4EDCC2D91E3040046259E /* IOwnedCardRepository.swift in Sources */,
 				9933637F2D91833E00C25DB1 /* JsonCardRepository.swift in Sources */,
 				99AB4E502D91917D002D76DA /* CardService.swift in Sources */,
+				99BB762E2D96B209009C696A /* OwnedCardCollectionViewCell.swift in Sources */,
 				0AE439E82D9581150005936C /* CardDecorator.swift in Sources */,
 				99B4EDC22D91DFCF0046259E /* Player.swift in Sources */,
 				0A19C3B82D8C6C570042E5F0 /* Card.swift in Sources */,

@@ -49,5 +49,9 @@ class OwnedCardService {
         return ownedCards
     }
     
+    func getByIndex(index: IndexPath) -> OwnedCard? {
+        return ownedCards[index.row]
+    }
+    
 }
     
