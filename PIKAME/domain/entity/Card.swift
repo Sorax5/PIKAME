@@ -16,10 +16,10 @@ class Card : Codable, CardDecorator {
     private var description : String
     private var type : Int
     private var value : Double
-    private var img : String
+    private var img : Data
     private var rarity : Int
     
-    init(uniqueId: UUID, name: String, description: String, type: Int, value: Double, img: String, rarity: Int) {
+    init(uniqueId: UUID, name: String, description: String, type: Int, value: Double, img: Data, rarity: Int) {
         self.uniqueId = uniqueId
         self.name = name
         self.description = description
@@ -27,6 +27,16 @@ class Card : Codable, CardDecorator {
         self.value = value
         self.img = img
         self.rarity = rarity
+    }
+    
+    init(dto: CardDTO, imgData: Data){
+        self.uniqueId = dto.uniqueId
+        self.name = dto.name
+        self.description = dto.description
+        self.type = dto.type
+        self.value = dto.value
+        self.img = imgData
+        self.rarity = dto.rarity
     }
     
     func getUniqueId() -> UUID {
@@ -53,7 +63,12 @@ class Card : Codable, CardDecorator {
         return rarity
     }
     
-    func getImg() -> String {
+    func getImg() -> Data {
         return img
     }
+    
+    static func fromDTO(dto: CardDTO, imgData : Data) -> Card {
+        return Card(dto: dto, imgData: imgData)
+    }
+        
 }

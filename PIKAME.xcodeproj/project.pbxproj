@@ -23,7 +23,7 @@
 		993363792D9180AA00C25DB1 /* IRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993363762D9180AA00C25DB1 /* IRepository.swift */; };
 		9933637F2D91833E00C25DB1 /* JsonCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933637C2D91833E00C25DB1 /* JsonCardRepository.swift */; };
 		99AB4E502D91917D002D76DA /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AB4E4F2D919173002D76DA /* CardService.swift */; };
-		99AB4E552D91A9E4002D76DA /* cards.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 99AB4E542D91A9E4002D76DA /* cards.bundle */; };
+		99AB4E552D91A9E4002D76DA /* data.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 99AB4E542D91A9E4002D76DA /* data.bundle */; };
 		99B4EDC22D91DFCF0046259E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4EDC12D91DFCC0046259E /* Player.swift */; };
 		99B4EDC52D91DFFB0046259E /* OwnedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4EDC42D91DFF70046259E /* OwnedCard.swift */; };
 		99B4EDC82D91E1BA0046259E /* OwnedCardDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4EDC72D91E1B40046259E /* OwnedCardDTO.swift */; };
@@ -35,6 +35,7 @@
 		99BB762D2D96B209009C696A /* OwnedCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99BB762C2D96B209009C696A /* OwnedCardCollectionViewCell.xib */; };
 		99BB762E2D96B209009C696A /* OwnedCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BB762B2D96B209009C696A /* OwnedCardCollectionViewCell.swift */; };
 		99BB76302D96D931009C696A /* OwnedCardDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BB762F2D96D931009C696A /* OwnedCardDataViewController.swift */; };
+		99BB76322D96EBDF009C696A /* CardDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BB76312D96EBDF009C696A /* CardDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +57,7 @@
 		993363762D9180AA00C25DB1 /* IRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRepository.swift; sourceTree = "<group>"; };
 		9933637C2D91833E00C25DB1 /* JsonCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonCardRepository.swift; sourceTree = "<group>"; };
 		99AB4E4F2D919173002D76DA /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
-		99AB4E542D91A9E4002D76DA /* cards.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = cards.bundle; sourceTree = "<group>"; };
+		99AB4E542D91A9E4002D76DA /* data.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = data.bundle; sourceTree = "<group>"; };
 		99B4EDC12D91DFCC0046259E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		99B4EDC42D91DFF70046259E /* OwnedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCard.swift; sourceTree = "<group>"; };
 		99B4EDC72D91E1B40046259E /* OwnedCardDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCardDTO.swift; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		99BB762B2D96B209009C696A /* OwnedCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		99BB762C2D96B209009C696A /* OwnedCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OwnedCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		99BB762F2D96D931009C696A /* OwnedCardDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCardDataViewController.swift; sourceTree = "<group>"; };
+		99BB76312D96EBDF009C696A /* CardDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +111,7 @@
 				0A19C3A82D8C69270042E5F0 /* Assets.xcassets */,
 				0A19C3AA2D8C69270042E5F0 /* LaunchScreen.storyboard */,
 				0A19C3AD2D8C69270042E5F0 /* Info.plist */,
-				99AB4E542D91A9E4002D76DA /* cards.bundle */,
+				99AB4E542D91A9E4002D76DA /* data.bundle */,
 			);
 			path = PIKAME;
 			sourceTree = "<group>";
@@ -192,6 +194,7 @@
 		99B4EDC62D91E1890046259E /* dto */ = {
 			isa = PBXGroup;
 			children = (
+				99BB76312D96EBDF009C696A /* CardDTO.swift */,
 				99B4EDC72D91E1B40046259E /* OwnedCardDTO.swift */,
 			);
 			path = dto;
@@ -256,7 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A19C3A92D8C69270042E5F0 /* Assets.xcassets in Resources */,
-				99AB4E552D91A9E4002D76DA /* cards.bundle in Resources */,
+				99AB4E552D91A9E4002D76DA /* data.bundle in Resources */,
 				99BB762D2D96B209009C696A /* OwnedCardCollectionViewCell.xib in Resources */,
 				0A19C3AC2D8C69270042E5F0 /* Base in Resources */,
 				2D6B87882D9409FE001CEABC /* UICard.xib in Resources */,
@@ -289,6 +292,7 @@
 				99BB762E2D96B209009C696A /* OwnedCardCollectionViewCell.swift in Sources */,
 				0AE439E82D9581150005936C /* CardDecorator.swift in Sources */,
 				99B4EDC22D91DFCF0046259E /* Player.swift in Sources */,
+				99BB76322D96EBDF009C696A /* CardDTO.swift in Sources */,
 				0A19C3B82D8C6C570042E5F0 /* Card.swift in Sources */,
 				99B4EDCE2D91E3590046259E /* JsonOwnedCardRepository.swift in Sources */,
 				0AE439F82D9594CC0005936C /* OwnedCardsCollectionViewController.swift in Sources */,

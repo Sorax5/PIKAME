@@ -14,5 +14,5 @@ protocol CardDecorator {
     func getType() -> Int
     func getValue() -> Double
     func getRarity() -> Int
-    func getImg() -> String
+    func getImg() -> Data
 }

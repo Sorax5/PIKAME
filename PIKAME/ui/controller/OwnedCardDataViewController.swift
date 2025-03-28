@@ -25,6 +25,7 @@ class OwnedCardDataViewController: UIViewController {
             desc.text = ownedCard.getDescription()
             type.text = String(ownedCard.getType())
             value.text = String(ownedCard.getValue())
+            image.image = UIImage(data: ownedCard.getImg())
         }
             
     }

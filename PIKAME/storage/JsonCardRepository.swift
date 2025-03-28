@@ -9,28 +9,36 @@ import Foundation
 
 /// Cet class as été crée avec l'aide de l'IA
 class JsonCardRepository : ICardRepository {
-    private var folder : URL
+    private var cardFolder : URL
     
     init(folder: URL) {
-        self.folder = folder
+        self.cardFolder = folder
     }
         
     func readAll() async -> [Card] {
         do {
-            guard let bundleFolder = Bundle.main.url(forResource: "cards", withExtension: "bundle") else {
-                print("Impossible de trouver le dossier dans le bundle.")
+            
+            guard let cardBundle = Bundle.main.url(forResource: "data.bundle/cards", withExtension: nil) else {
+                print("Impossible de trouver le dossier data/cards dans le bundle.")
+                return []
+            }
+            
+            guard let imageBundle = Bundle.main.url(forResource: "data.bundle/images", withExtension: nil) else {
+                print("Impossible de trouver le dossier data/images dans le bundle.")
                 return []
             }
 
-            let files = try FileManager.default.contentsOfDirectory(at: bundleFolder, includingPropertiesForKeys: nil, options: [])
-
+            let files = try FileManager.default.contentsOfDirectory(at: cardBundle, includingPropertiesForKeys: nil, options: [])
             let jsonFiles = files.filter { $0.pathExtension == "json" }
 
             let decoder = JSONDecoder()
 
             return try jsonFiles.compactMap { url in
                 let data = try Data(contentsOf: url)
-                return try decoder.decode(Card.self, from: data)
+                let dto = try decoder.decode(CardDTO.self, from: data)
+                let imagePath = imageBundle.appendingPathComponent(dto.img)
+                let imageData = try Data(contentsOf: imagePath)
+                return Card.fromDTO(dto: dto, imgData: imageData)
             }
         } catch {
             print("Erreur lors de la lecture des fichiers dans le bundle : \(error)")
@@ -53,7 +61,7 @@ class JsonCardRepository : ICardRepository {
     }
     
     func update(_ model: Card) async -> Card? {
-        return Card(uniqueId: UUID.init(), name: "", description: "String", type: 1, value: 1.0, img: "String", rarity: 1)
+        return nil
     }
     
     func delete(by id: UUID) async -> Bool {
@@ -65,7 +73,7 @@ class JsonCardRepository : ICardRepository {
     }
         
     func getFile(for id: UUID) -> URL {
-        return folder.appendingPathComponent("\(id.uuidString).json")
+        return cardFolder.appendingPathComponent("\(id.uuidString).json")
     }
     
 }

@@ -50,7 +50,7 @@ class OwnedCard : NSObject, CardDecorator {
         return card.getRarity()
     }
     
-    func getImg() -> String {
+    func getImg() -> Data {
         return card.getImg()
     }
     
