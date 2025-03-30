@@ -53,5 +53,28 @@ class OwnedCardService {
         return ownedCards[index.row]
     }
     
+    func saveAll() {
+        Task {
+            for ownedCard in ownedCards {
+                await repository.update(ownedCard)
+            }
+        }
+    }
+        
+    func hasCard(card: Card) -> Bool {
+        return ownedCards.contains { $0.getCard().getUniqueId() == card.getUniqueId() }
+    }
+    
+    func buyCard(card: Card){
+        if hasCard(card: card) {
+            let ownedCard = ownedCards.first { $0.getCard().getUniqueId() == card.getUniqueId() }
+            ownedCard?.level += 1
+        }
+        else {
+            let ownedCard = OwnedCard(card: card)
+            create(ownedCard: ownedCard)
+        }
+    }
+    
 }
     

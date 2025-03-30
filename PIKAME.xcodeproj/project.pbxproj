@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A19C3A02D8C69260042E5F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A19C39F2D8C69260042E5F0 /* AppDelegate.swift */; };
 		0A19C3A22D8C69260042E5F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A19C3A12D8C69260042E5F0 /* SceneDelegate.swift */; };
-		0A19C3A42D8C69260042E5F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A19C3A32D8C69260042E5F0 /* ViewController.swift */; };
 		0A19C3A72D8C69260042E5F0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0A19C3A62D8C69260042E5F0 /* Base */; };
 		0A19C3A92D8C69270042E5F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A19C3A82D8C69270042E5F0 /* Assets.xcassets */; };
 		0A19C3AC2D8C69270042E5F0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0A19C3AB2D8C69270042E5F0 /* Base */; };
@@ -24,6 +23,8 @@
 		9933637F2D91833E00C25DB1 /* JsonCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933637C2D91833E00C25DB1 /* JsonCardRepository.swift */; };
 		99AB4E502D91917D002D76DA /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AB4E4F2D919173002D76DA /* CardService.swift */; };
 		99AB4E552D91A9E4002D76DA /* data.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 99AB4E542D91A9E4002D76DA /* data.bundle */; };
+		99B36D302D986FCE00111B7C /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B36D2F2D986FCE00111B7C /* ShopViewController.swift */; };
+		99B36D322D99990F00111B7C /* BuyableCardDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B36D312D99990F00111B7C /* BuyableCardDataViewController.swift */; };
 		99B4EDC22D91DFCF0046259E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4EDC12D91DFCC0046259E /* Player.swift */; };
 		99B4EDC52D91DFFB0046259E /* OwnedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4EDC42D91DFF70046259E /* OwnedCard.swift */; };
 		99B4EDC82D91E1BA0046259E /* OwnedCardDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4EDC72D91E1B40046259E /* OwnedCardDTO.swift */; };
@@ -42,7 +43,6 @@
 		0A19C39C2D8C69250042E5F0 /* PIKAME.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PIKAME.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A19C39F2D8C69260042E5F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A19C3A12D8C69260042E5F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0A19C3A32D8C69260042E5F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0A19C3A62D8C69260042E5F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A19C3A82D8C69270042E5F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A19C3AB2D8C69270042E5F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +58,8 @@
 		9933637C2D91833E00C25DB1 /* JsonCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonCardRepository.swift; sourceTree = "<group>"; };
 		99AB4E4F2D919173002D76DA /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
 		99AB4E542D91A9E4002D76DA /* data.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = data.bundle; sourceTree = "<group>"; };
+		99B36D2F2D986FCE00111B7C /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		99B36D312D99990F00111B7C /* BuyableCardDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyableCardDataViewController.swift; sourceTree = "<group>"; };
 		99B4EDC12D91DFCC0046259E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		99B4EDC42D91DFF70046259E /* OwnedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCard.swift; sourceTree = "<group>"; };
 		99B4EDC72D91E1B40046259E /* OwnedCardDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCardDTO.swift; sourceTree = "<group>"; };
@@ -156,9 +158,10 @@
 			children = (
 				99BB76272D95FFE0009C696A /* PikameNavigationViewController.swift */,
 				99BB76282D95FFE0009C696A /* SplashViewController.swift */,
-				0A19C3A32D8C69260042E5F0 /* ViewController.swift */,
 				0AE439F72D9594CC0005936C /* OwnedCardsCollectionViewController.swift */,
 				99BB762F2D96D931009C696A /* OwnedCardDataViewController.swift */,
+				99B36D312D99990F00111B7C /* BuyableCardDataViewController.swift */,
+				99B36D2F2D986FCE00111B7C /* ShopViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -275,7 +278,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				99BB76302D96D931009C696A /* OwnedCardDataViewController.swift in Sources */,
-				0A19C3A42D8C69260042E5F0 /* ViewController.swift in Sources */,
 				99B4EDC52D91DFFB0046259E /* OwnedCard.swift in Sources */,
 				0AE439EA2D9587400005936C /* Application.swift in Sources */,
 				993363782D9180AA00C25DB1 /* ICardRepository.swift in Sources */,
@@ -291,9 +293,11 @@
 				99AB4E502D91917D002D76DA /* CardService.swift in Sources */,
 				99BB762E2D96B209009C696A /* OwnedCardCollectionViewCell.swift in Sources */,
 				0AE439E82D9581150005936C /* CardDecorator.swift in Sources */,
+				99B36D322D99990F00111B7C /* BuyableCardDataViewController.swift in Sources */,
 				99B4EDC22D91DFCF0046259E /* Player.swift in Sources */,
 				99BB76322D96EBDF009C696A /* CardDTO.swift in Sources */,
 				0A19C3B82D8C6C570042E5F0 /* Card.swift in Sources */,
+				99B36D302D986FCE00111B7C /* ShopViewController.swift in Sources */,
 				99B4EDCE2D91E3590046259E /* JsonOwnedCardRepository.swift in Sources */,
 				0AE439F82D9594CC0005936C /* OwnedCardsCollectionViewController.swift in Sources */,
 				99B4EDC82D91E1BA0046259E /* OwnedCardDTO.swift in Sources */,

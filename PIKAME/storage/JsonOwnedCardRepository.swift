@@ -20,12 +20,7 @@ class JsonOwnedCardRepository: IOwnedCardRepository {
         
         do {
             if !FileManager.default.fileExists(atPath: self.saveFolder.path) {
-                print("Owned card folder not found, creating it...")
                 try FileManager.default.createDirectory(at: self.saveFolder, withIntermediateDirectories: true, attributes: nil)
-                print("Owned card folder created at \(self.saveFolder.path)")
-            }
-            else{
-                print("Owned card folder found at \(self.saveFolder.path)")
             }
         }
         catch {

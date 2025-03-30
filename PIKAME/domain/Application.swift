@@ -15,6 +15,8 @@ class Application {
     private let cardService : CardService
     private let ownedCardService : OwnedCardService
     
+    private let player: Player = Player()
+    
     public var OnDataLoaded : [DataLoaded] = []
     
     init(){
@@ -47,5 +49,9 @@ class Application {
     
     public func getOwnedCardService() -> OwnedCardService {
         return self.ownedCardService
+    }
+    
+    public func getPlayer() -> Player {
+        return self.player
     }
 }

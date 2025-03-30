@@ -7,19 +7,21 @@
 
 import UIKit
 
-class OwnedCardDataViewController: UIViewController {
+class BuyableCardDataViewController: UIViewController {
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var type: UILabel!
     @IBOutlet weak var value: UILabel!
-    @IBOutlet weak var level: UILabel!
     
-    private var card : OwnedCard?
+    private var card : Card?
+    private var ownedCardService : OwnedCardService?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.ownedCardService = Application.INSTANCE.getOwnedCardService()
     
         
         if let ownedCard = card {
@@ -30,23 +32,16 @@ class OwnedCardDataViewController: UIViewController {
             
             let imgUi = UIImage(data: ownedCard.getImg(), scale: UIScreen.main.scale)
             image.image = imgUi
-            level.text = String(ownedCard.level)
         }
     }
     
-    public func load(card: OwnedCard){
+    public func load(card: Card){
         self.card = card
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func OnBuyCard(_ sender: Any) {
+        ownedCardService!.buyCard(card: self.card!)
+        self.dismiss(animated: true, completion: nil)
     }
-    */
-
 }
