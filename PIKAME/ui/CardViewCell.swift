@@ -13,23 +13,24 @@ class CardViewCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var name: UILabel!
     
-    private var card: Card?
+    private var card: CardDecorator?
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    public func load(card: Card){
+    public func load(card: CardDecorator){
         self.card = card
-        name.text = card.getName()
-        value.text = String(card.getValue())
-        
-        let imgUI = UIImage(data: card.getImg(), scale: UIScreen.main.scale)
-        image.image = imgUI
+        if let currentCard = self.card {
+            name.text = currentCard.getName()
+            value.text = String(currentCard.getValue())
+            
+            let imgUI = UIImage(data: currentCard.getImg(), scale: UIScreen.main.scale)
+            image.image = imgUI
+        }
     }
     
-    public func getCard() -> Card?{
+    public func getCard() -> CardDecorator?{
         return card
     }
-
 }

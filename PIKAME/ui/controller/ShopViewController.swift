@@ -23,9 +23,11 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.ownedCardService = Application.INSTANCE.getOwnedCardService()
         self.cardService = Application.INSTANCE.getCardService()
         
+        let nibCell = UINib(nibName: "CardViewCell", bundle: nil)
+        buyableCardsCollection.register(nibCell, forCellWithReuseIdentifier: "Cell")
+        
         buyableCardsCollection.dataSource = self
         buyableCardsCollection.delegate = self
-        buyableCardsCollection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
         chooseRandomCard()
     }
@@ -35,15 +37,9 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        cell.backgroundColor = .systemBlue
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CardViewCell
         let card = self.buyableCards[indexPath.row]
-        let imgUI = UIImage(data: card.getImg(), scale: UIScreen.main.scale)
-        let imgView = UIImageView(image: imgUI)
-        imgView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        cell.addSubview(imgView)
-        
+        cell.load(card: card)
         return cell
     }
     
