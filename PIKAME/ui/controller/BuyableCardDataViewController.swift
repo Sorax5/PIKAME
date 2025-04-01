@@ -14,6 +14,7 @@ class BuyableCardDataViewController: UIViewController {
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var type: UILabel!
     @IBOutlet weak var value: UILabel!
+    @IBOutlet weak var background: UIView!
     
     private var card : Card?
     private var ownedCardService : OwnedCardService?
@@ -27,11 +28,12 @@ class BuyableCardDataViewController: UIViewController {
         if let ownedCard = card {
             name.text = ownedCard.getName()
             desc.text = ownedCard.getDescription()
-            type.text = String(ownedCard.getType())
+            type.text = Application.INSTANCE.getType(type: ownedCard.getType())
             value.text = String(ownedCard.getValue())
             
             let imgUi = UIImage(data: ownedCard.getImg(), scale: UIScreen.main.scale)
             image.image = imgUi
+            background.backgroundColor = Application.INSTANCE.getRarityColor(rarity: ownedCard.getRarity())
         }
     }
     

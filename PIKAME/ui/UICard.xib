@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UICard" customModule="PIKAME" customModuleProvider="target">
             <connections>
+                <outlet property="background" destination="PKk-F1-7jq" id="bVr-Wm-eio"/>
                 <outlet property="boundsView" destination="KzX-Cr-uu4" id="pZ0-kB-DLw"/>
                 <outlet property="descriptionLabel" destination="6zK-xb-vAt" id="LMu-Ns-4Ze"/>
                 <outlet property="image" destination="3SE-ej-xmM" id="g0x-Jj-jd1"/>

@@ -24,7 +24,7 @@ class UICard: UIView {
     @IBOutlet weak var typeLabel:UILabel!
     @IBOutlet weak var boundsView:UIView!
     
-    var loaded : Bool = false
+    @IBOutlet weak var background: UIView!
     var loadedData : CardDecorator?
     
     override init(frame: CGRect){
@@ -46,16 +46,10 @@ class UICard: UIView {
         descriptionLabel.text = data.getDescription()
         valueLabel.text = String(data.getValue())
         
-        
-        if data.getType() == 1 {
-            typeLabel.text = "Equipement"
-        } else {
-            typeLabel.text = "Heros"
-        }
-        
-        loaded = true
+        typeLabel.text = Application.INSTANCE.getType(type: data.getType())
         
         
+        self.background.backgroundColor = Application.INSTANCE.getRarityColor(rarity: data.getRarity())
         addSubview(viewFromXib)
     }
     

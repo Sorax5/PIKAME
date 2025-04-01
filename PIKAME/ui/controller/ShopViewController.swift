@@ -40,12 +40,16 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CardViewCell
         let card = self.buyableCards[indexPath.row]
         cell.load(card: card)
+        
+        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onCardClick)))
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let card = self.buyableCards[indexPath.row]
-        self.performSegue(withIdentifier: "DetailsBuyCard", sender: card)
+    @objc func onCardClick(sender: UITapGestureRecognizer){
+        if let cell = sender.view as? CardViewCell {
+            let ownedCard = cell.getCard()
+            self.performSegue(withIdentifier: "DetailsBuyCard", sender: ownedCard)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
