@@ -16,6 +16,7 @@ class OwnedCardDataViewController: UIViewController {
     @IBOutlet weak var value: UILabel!
     @IBOutlet weak var level: UILabel!
     
+    @IBOutlet weak var background: UIView!
     private var card : OwnedCard?
 
     override func viewDidLoad() {
@@ -25,28 +26,17 @@ class OwnedCardDataViewController: UIViewController {
         if let ownedCard = card {
             name.text = ownedCard.getName()
             desc.text = ownedCard.getDescription()
-            type.text = String(ownedCard.getType())
+            type.text = Application.INSTANCE.getType(type: ownedCard.getType())
             value.text = String(ownedCard.getValue())
             
             let imgUi = UIImage(data: ownedCard.getImg(), scale: UIScreen.main.scale)
             image.image = imgUi
             level.text = String(ownedCard.level)
+            background.backgroundColor = Application.INSTANCE.getRarityColor(rarity: ownedCard.getRarity())
         }
     }
     
     public func load(card: OwnedCard){
         self.card = card
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

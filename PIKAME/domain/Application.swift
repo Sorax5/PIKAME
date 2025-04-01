@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 typealias DataLoaded = () -> Void
 
@@ -16,6 +17,19 @@ class Application {
     private let ownedCardService : OwnedCardService
     
     private let player: Player = Player()
+    
+    private let rarity: Array<UIColor> = [
+        .white,
+        .systemGreen,
+        .blue,
+        .systemYellow,
+        .systemPurple
+    ]
+    
+    private let type: Array<String> = [
+        "Equipement",
+        "Heros"
+    ]
     
     public var OnDataLoaded : [DataLoaded] = []
     
@@ -53,5 +67,13 @@ class Application {
     
     public func getPlayer() -> Player {
         return self.player
+    }
+    
+    public func getRarityColor(rarity: Int) -> UIColor {
+        return self.rarity[rarity]
+    }
+    
+    public func getType(type: Int) -> String {
+        return self.type[type]
     }
 }

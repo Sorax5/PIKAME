@@ -15,25 +15,15 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         
         Application.INSTANCE.OnDataLoaded.append {
-            self.loading.stopAnimating()
-            // segue names : SplashToMain
-            self.performSegue(withIdentifier: "SplashToMain", sender: self)
+            self.onDataLoad()
         }
         
         Application.INSTANCE.loadAll()
         loading!.startAnimating()
-        print("dzdzdd")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func onDataLoad(){
+        self.loading.stopAnimating()
+        self.performSegue(withIdentifier: "SplashToMain", sender: self)
     }
-    */
-
 }

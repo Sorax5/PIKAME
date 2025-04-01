@@ -13,6 +13,8 @@ class CardViewCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var name: UILabel!
     
+    @IBOutlet weak var background: RoundUIViewController!
+    
     private var card: CardDecorator?
     
     override func awakeFromNib() {
@@ -27,6 +29,8 @@ class CardViewCell: UICollectionViewCell {
             
             let imgUI = UIImage(data: currentCard.getImg(), scale: UIScreen.main.scale)
             image.image = imgUI
+            
+            background.backgroundColor = Application.INSTANCE.getRarityColor(rarity: currentCard.getRarity())
         }
     }
     

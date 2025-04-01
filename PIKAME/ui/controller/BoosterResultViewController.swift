@@ -20,6 +20,8 @@ class BoosterResultViewController: UIViewController, UICollectionViewDataSource,
         
         self.resultCollection.delegate = self
         self.resultCollection.dataSource = self
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -33,5 +35,4 @@ class BoosterResultViewController: UIViewController, UICollectionViewDataSource,
         
         return cell
     }
-
 }
