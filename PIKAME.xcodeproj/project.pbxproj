@@ -16,6 +16,8 @@
 		0AE439E82D9581150005936C /* CardDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE439E72D9581150005936C /* CardDecorator.swift */; };
 		0AE439EA2D9587400005936C /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE439E92D9587400005936C /* Application.swift */; };
 		0AE439F82D9594CC0005936C /* OwnedCardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE439F72D9594CC0005936C /* OwnedCardsCollectionViewController.swift */; };
+		0AE65B832D9BE1E000414A1E /* BoosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE65B822D9BE1E000414A1E /* BoosterViewController.swift */; };
+		0AE65B852D9BED4100414A1E /* BoosterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE65B842D9BED4100414A1E /* BoosterResultViewController.swift */; };
 		2D6B87862D9409EC001CEABC /* UICard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6B87852D9409EC001CEABC /* UICard.swift */; };
 		2D6B87882D9409FE001CEABC /* UICard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6B87872D9409FE001CEABC /* UICard.xib */; };
 		993363782D9180AA00C25DB1 /* ICardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993363752D9180AA00C25DB1 /* ICardRepository.swift */; };
@@ -51,6 +53,8 @@
 		0AE439E72D9581150005936C /* CardDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDecorator.swift; sourceTree = "<group>"; };
 		0AE439E92D9587400005936C /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		0AE439F72D9594CC0005936C /* OwnedCardsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCardsCollectionViewController.swift; sourceTree = "<group>"; };
+		0AE65B822D9BE1E000414A1E /* BoosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterViewController.swift; sourceTree = "<group>"; };
+		0AE65B842D9BED4100414A1E /* BoosterResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterResultViewController.swift; sourceTree = "<group>"; };
 		2D6B87852D9409EC001CEABC /* UICard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICard.swift; sourceTree = "<group>"; };
 		2D6B87872D9409FE001CEABC /* UICard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UICard.xib; sourceTree = "<group>"; };
 		993363752D9180AA00C25DB1 /* ICardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICardRepository.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 				99BB762F2D96D931009C696A /* OwnedCardDataViewController.swift */,
 				99B36D312D99990F00111B7C /* BuyableCardDataViewController.swift */,
 				99B36D2F2D986FCE00111B7C /* ShopViewController.swift */,
+				0AE65B822D9BE1E000414A1E /* BoosterViewController.swift */,
+				0AE65B842D9BED4100414A1E /* BoosterResultViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 				2D6B87862D9409EC001CEABC /* UICard.swift in Sources */,
 				99B4EDCA2D91E29F0046259E /* OwnedCardService.swift in Sources */,
 				99B4EDCC2D91E3040046259E /* IOwnedCardRepository.swift in Sources */,
+				0AE65B832D9BE1E000414A1E /* BoosterViewController.swift in Sources */,
 				9933637F2D91833E00C25DB1 /* JsonCardRepository.swift in Sources */,
 				99AB4E502D91917D002D76DA /* CardService.swift in Sources */,
 				99BB762E2D96B209009C696A /* OwnedCardCollectionViewCell.swift in Sources */,
@@ -300,6 +307,7 @@
 				99B36D302D986FCE00111B7C /* ShopViewController.swift in Sources */,
 				99B4EDCE2D91E3590046259E /* JsonOwnedCardRepository.swift in Sources */,
 				0AE439F82D9594CC0005936C /* OwnedCardsCollectionViewController.swift in Sources */,
+				0AE65B852D9BED4100414A1E /* BoosterResultViewController.swift in Sources */,
 				99B4EDC82D91E1BA0046259E /* OwnedCardDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,7 +469,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,7 +499,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

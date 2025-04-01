@@ -59,7 +59,6 @@ class JsonOwnedCardRepository: IOwnedCardRepository {
             let jsonData = try encoder.encode(dto)
             
             try jsonData.write(to: fileURL, options: .atomic)
-            print("Owned card saved to \(fileURL.path)")
             return true
         } catch {
             print("Error while creating owned card: \(error)")
@@ -91,7 +90,6 @@ class JsonOwnedCardRepository: IOwnedCardRepository {
             let jsonData = try encoder.encode(dto)
             
             try jsonData.write(to: fileURL, options: .atomic)
-            print("Owned card updated at \(fileURL.path)")
             return model
         } catch {
             print("Error while updating owned card: \(error)")
@@ -104,7 +102,6 @@ class JsonOwnedCardRepository: IOwnedCardRepository {
         
         do {
             try FileManager.default.removeItem(at: fileURL)
-            print("Owned card deleted from \(fileURL.path)")
             return true
         } catch {
             print("Error while deleting owned card: \(error)")

@@ -17,6 +17,9 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
         
         let nibCell = UINib(nibName: "OwnedCardCollectionViewCell", bundle: nil)
         collectionView.register(nibCell, forCellWithReuseIdentifier: "ownedcard")
+        
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -29,9 +32,7 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
             cell.load(card: card)
             cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onCardClick)))
         }
-    
         return cell
-
     }
     
     @objc func onCardClick(sender: UITapGestureRecognizer){
@@ -47,6 +48,11 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
                 vc.load(card: ownedCard)
             }
         }
+    }
+    
+    private func onOwnedCardAdded(card: OwnedCard) {
+        self.collectionView.reloadData()
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

@@ -41,7 +41,7 @@ class BuyableCardDataViewController: UIViewController {
     
 
     @IBAction func OnBuyCard(_ sender: Any) {
-        ownedCardService!.buyCard(card: self.card!)
+        ownedCardService!.addCard(card: self.card!)
         self.dismiss(animated: true, completion: nil)
     }
 }

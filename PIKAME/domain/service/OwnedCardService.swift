@@ -9,11 +9,14 @@ import Foundation
 
 typealias OwnedCardLoadAction = ([OwnedCard]) -> Void
 
+typealias OwnedCardAddAction = (OwnedCard) -> Void
+
 class OwnedCardService {
     private var repository: any IOwnedCardRepository
     private var ownedCards: [OwnedCard]
     
     public var OnOwnCardLoaded : [OwnedCardLoadAction] = []
+    public var OnOwnCardAdded : [OwnedCardAddAction] = []
     
     init(repository: any IOwnedCardRepository) {
         self.repository = repository
@@ -38,10 +41,15 @@ class OwnedCardService {
                 if !hasCreate{
                     throw NSError(domain: "OwnedCardService", code: 1, userInfo: [NSLocalizedDescriptionKey: "Error creating owned card"])
                 }
-                ownedCards.append(ownedCard)
             } catch {
                 print("Error creating owned card \(error)")
             }
+        }
+        
+        ownedCards.append(ownedCard)
+        
+        OnOwnCardAdded.forEach {
+            $0(ownedCard)
         }
     }
     
@@ -53,22 +61,21 @@ class OwnedCardService {
         return ownedCards[index.row]
     }
     
+    func getByUniqueId(id: UUID) -> OwnedCard? {
+        return self.ownedCards.first { $0.getUniqueId() == id }
+    }
+    
     func saveAll() {
         Task {
             for ownedCard in ownedCards {
-                await repository.update(ownedCard)
+                _ = await repository.update(ownedCard)
             }
         }
     }
-        
-    func hasCard(card: Card) -> Bool {
-        return ownedCards.contains { $0.getCard().getUniqueId() == card.getUniqueId() }
-    }
     
-    func buyCard(card: Card){
-        if hasCard(card: card) {
-            let ownedCard = ownedCards.first { $0.getCard().getUniqueId() == card.getUniqueId() }
-            ownedCard?.level += 1
+    func addCard(card: Card){
+        if let ownedCard = getByUniqueId(id: card.getUniqueId()) {
+            ownedCard.level += 1
         }
         else {
             let ownedCard = OwnedCard(card: card)

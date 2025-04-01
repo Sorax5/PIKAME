@@ -12,12 +12,16 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var buyableCardsCollection: UICollectionView!
     
     private var ownedCardService: OwnedCardService?
+    private var cardService : CardService?
     private var buyableCards: [OwnedCard] = []
+    
+    private var boosterCards: Array<Card> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.ownedCardService = Application.INSTANCE.getOwnedCardService()
+        self.cardService = Application.INSTANCE.getCardService()
         
         buyableCardsCollection.dataSource = self
         buyableCardsCollection.delegate = self
@@ -54,11 +58,23 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
                 vc.load(card: ownedCard.getCard())
             }
         }
+        
+        if let boosterView = segue.destination as? BoosterViewController {
+            boosterView.cards = self.boosterCards
+            self.boosterCards = []
+        }
     }
 
-    
     @IBAction func OnRerollButtonClick(_ sender: Any) {
         chooseRandomCard()
+    }
+    
+    @IBAction func OnBoosterButtonClick(_ sender: Any) {
+        self.boosterCards = self.cardService!.openBooster()
+        
+        for choosedCard in self.boosterCards {
+            self.ownedCardService!.addCard(card: choosedCard)
+        }
     }
     
     private func chooseRandomCard(){

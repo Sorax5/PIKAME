@@ -38,5 +38,16 @@ class CardService : NSObject {
         }
         cards.append(card)
     }
+    
+    func openBooster() -> [Card] {
+        var choosedCards : [Card] = []
+        for _ in 0...4 {
+            let randomIndex = Int.random(in: 0..<cards.count)
+            let choosedCard = self.cards[randomIndex]
+            choosedCards.append(choosedCard)
+        }
+        
+        return choosedCards
+    }
 }
 
