@@ -1,6 +1,14 @@
 [
 	{
-		"name":"Le méchant slime pas beau",
+		"name":"Slime",
 		"image":"redslime"
-	}
+	},
+    {
+        "name":"Cyrille (Sobre)",
+        "image":"cyrille"
+    },
+    {
+        "name":"Qilby",
+        "image":"qilby"
+    }
 ]

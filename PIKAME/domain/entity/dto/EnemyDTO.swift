@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct EnemyDTO : Codable {
+    public var name : String
+    public var image : String
+}
