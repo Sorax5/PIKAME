@@ -18,6 +18,8 @@
 		0AE439F82D9594CC0005936C /* OwnedCardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE439F72D9594CC0005936C /* OwnedCardsCollectionViewController.swift */; };
 		0AE65B832D9BE1E000414A1E /* BoosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE65B822D9BE1E000414A1E /* BoosterViewController.swift */; };
 		0AE65B852D9BED4100414A1E /* BoosterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE65B842D9BED4100414A1E /* BoosterResultViewController.swift */; };
+		0AE65B882D9BF35D00414A1E /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE65B862D9BF35D00414A1E /* CardViewCell.swift */; };
+		0AE65B892D9BF35D00414A1E /* CardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AE65B872D9BF35D00414A1E /* CardViewCell.xib */; };
 		2D6B87862D9409EC001CEABC /* UICard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6B87852D9409EC001CEABC /* UICard.swift */; };
 		2D6B87882D9409FE001CEABC /* UICard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6B87872D9409FE001CEABC /* UICard.xib */; };
 		993363782D9180AA00C25DB1 /* ICardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993363752D9180AA00C25DB1 /* ICardRepository.swift */; };
@@ -55,6 +57,8 @@
 		0AE439F72D9594CC0005936C /* OwnedCardsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCardsCollectionViewController.swift; sourceTree = "<group>"; };
 		0AE65B822D9BE1E000414A1E /* BoosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterViewController.swift; sourceTree = "<group>"; };
 		0AE65B842D9BED4100414A1E /* BoosterResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterResultViewController.swift; sourceTree = "<group>"; };
+		0AE65B862D9BF35D00414A1E /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
+		0AE65B872D9BF35D00414A1E /* CardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewCell.xib; sourceTree = "<group>"; };
 		2D6B87852D9409EC001CEABC /* UICard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICard.swift; sourceTree = "<group>"; };
 		2D6B87872D9409FE001CEABC /* UICard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UICard.xib; sourceTree = "<group>"; };
 		993363752D9180AA00C25DB1 /* ICardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICardRepository.swift; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 				2D6B87872D9409FE001CEABC /* UICard.xib */,
 				99BB762B2D96B209009C696A /* OwnedCardCollectionViewCell.swift */,
 				99BB762C2D96B209009C696A /* OwnedCardCollectionViewCell.xib */,
+				0AE65B862D9BF35D00414A1E /* CardViewCell.swift */,
+				0AE65B872D9BF35D00414A1E /* CardViewCell.xib */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A19C3A92D8C69270042E5F0 /* Assets.xcassets in Resources */,
+				0AE65B892D9BF35D00414A1E /* CardViewCell.xib in Resources */,
 				99AB4E552D91A9E4002D76DA /* data.bundle in Resources */,
 				99BB762D2D96B209009C696A /* OwnedCardCollectionViewCell.xib in Resources */,
 				0A19C3AC2D8C69270042E5F0 /* Base in Resources */,
@@ -304,6 +311,7 @@
 				99B4EDC22D91DFCF0046259E /* Player.swift in Sources */,
 				99BB76322D96EBDF009C696A /* CardDTO.swift in Sources */,
 				0A19C3B82D8C6C570042E5F0 /* Card.swift in Sources */,
+				0AE65B882D9BF35D00414A1E /* CardViewCell.swift in Sources */,
 				99B36D302D986FCE00111B7C /* ShopViewController.swift in Sources */,
 				99B4EDCE2D91E3590046259E /* JsonOwnedCardRepository.swift in Sources */,
 				0AE439F82D9594CC0005936C /* OwnedCardsCollectionViewController.swift in Sources */,

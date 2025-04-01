@@ -41,7 +41,7 @@ class CardService : NSObject {
     
     func openBooster() -> [Card] {
         var choosedCards : [Card] = []
-        for _ in 0...4 {
+        for _ in 0...5 {
             let randomIndex = Int.random(in: 0..<cards.count)
             let choosedCard = self.cards[randomIndex]
             choosedCards.append(choosedCard)
