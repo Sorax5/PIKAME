@@ -47,6 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
         
         Application.INSTANCE.getOwnedCardService().saveAll()
+        Application.INSTANCE.getPlayerService().savePlayer()
     }
 
 

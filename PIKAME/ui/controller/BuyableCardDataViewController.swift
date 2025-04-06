@@ -16,15 +16,20 @@ class BuyableCardDataViewController: UIViewController {
     @IBOutlet weak var value: UILabel!
     @IBOutlet weak var background: UIView!
     
+    @IBOutlet weak var buyButton: UIButton!
     private var card : Card?
+    private var player: Player?
     private var ownedCardService : OwnedCardService?
+    
+    private var moneyObserver: NSKeyValueObservation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.ownedCardService = Application.INSTANCE.getOwnedCardService()
-    
         
+        self.player = Application.INSTANCE.getPlayer()
+            
         if let ownedCard = card {
             name.text = ownedCard.getName()
             desc.text = ownedCard.getDescription()
@@ -34,7 +39,34 @@ class BuyableCardDataViewController: UIViewController {
             let imgUi = UIImage(data: ownedCard.getImg(), scale: UIScreen.main.scale)
             image.image = imgUi
             background.backgroundColor = Application.INSTANCE.getRarityColor(rarity: ownedCard.getRarity())
+            
+            updateButton()
+            
+            self.moneyObserver = player?.observe(\.money, options: [.old, .new]) { [weak self] player, change in
+                self?.updateButton()
+            }
         }
+    }
+    
+    private func updateButton(){
+        guard let player = self.player else { return }
+        guard let ownedCard = self.card else {return}
+        
+        let cost = Application.INSTANCE.getCardPrice(rarity: ownedCard.getRarity())
+        
+        buyButton.setTitle("Acheter : \(cost) PikaCoin", for: .normal)
+        
+        if player.money < cost {
+            buyButton.isEnabled = false
+            buyButton.backgroundColor = .red
+        }
+        else {
+            buyButton.isEnabled = true
+            buyButton.backgroundColor = .systemBlue
+        }
+        
+        buyButton.layer.cornerRadius = 10
+        buyButton.layer.masksToBounds = true
     }
     
     public func load(card: Card){
@@ -44,6 +76,10 @@ class BuyableCardDataViewController: UIViewController {
 
     @IBAction func OnBuyCard(_ sender: Any) {
         ownedCardService!.addCard(card: self.card!)
+        self.player?.money -= Application.INSTANCE.getCardPrice(rarity: card!.getRarity())
+        
+        
         self.dismiss(animated: true, completion: nil)
     }
+    
 }

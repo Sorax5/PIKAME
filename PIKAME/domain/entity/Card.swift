@@ -11,7 +11,7 @@ import Foundation
  Représente une carte sérializable
  */
 class Card : Codable, CardDecorator {
-    private var uniqueId : UUID
+    private var uniqueId : Int
     private var name : String
     private var description : String
     private var type : Int
@@ -19,7 +19,7 @@ class Card : Codable, CardDecorator {
     private var img : Data
     private var rarity : Int
     
-    init(uniqueId: UUID, name: String, description: String, type: Int, value: Double, img: Data, rarity: Int) {
+    init(uniqueId: Int, name: String, description: String, type: Int, value: Double, img: Data, rarity: Int) {
         self.uniqueId = uniqueId
         self.name = name
         self.description = description
@@ -39,7 +39,7 @@ class Card : Codable, CardDecorator {
         self.rarity = dto.rarity
     }
     
-    func getUniqueId() -> UUID {
+    func getUniqueId() -> Int {
         return uniqueId
     }
     

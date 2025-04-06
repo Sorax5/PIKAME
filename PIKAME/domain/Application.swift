@@ -15,8 +15,7 @@ class Application {
     
     private let cardService : CardService
     private let ownedCardService : OwnedCardService
-    
-    private let player: Player = Player()
+    private let playerService: PlayerService
     
     private let rarity: Array<UIColor> = [
         .white,
@@ -31,6 +30,14 @@ class Application {
         "Heros"
     ]
     
+    private let price: Array<Int> = [
+        5,
+        8,
+        10,
+        15,
+        20
+    ]
+    
     public var OnDataLoaded : [DataLoaded] = []
     
     init(){
@@ -40,14 +47,17 @@ class Application {
         
         let ownedCardFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let ownedCardRepository = JsonOwnedCardRepository(cardService: cardService, saveFolder: ownedCardFolder)
-
+        
         self.ownedCardService = OwnedCardService(repository: ownedCardRepository)
+        
+        self.playerService = PlayerService(ownedCardService: self.ownedCardService)
     }
     
     public func loadAll() {
         Task {
             await self.cardService.loadAll()
             await self.ownedCardService.loadAll()
+            await self.playerService.loadPlayer()
             
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
@@ -55,7 +65,7 @@ class Application {
             }
         }
     }
-        
+    
     
     public func getCardService() -> CardService {
         return self.cardService
@@ -65,8 +75,8 @@ class Application {
         return self.ownedCardService
     }
     
-    public func getPlayer() -> Player {
-        return self.player
+    public func getPlayer() -> Player? {
+        return self.playerService.getPlayer()
     }
     
     public func getRarityColor(rarity: Int) -> UIColor {
@@ -75,5 +85,13 @@ class Application {
     
     public func getType(type: Int) -> String {
         return self.type[type]
+    }
+    
+    public func getPlayerService() -> PlayerService {
+        return self.playerService
+    }
+    
+    public func getCardPrice(rarity: Int) -> Int {
+        return self.price[rarity]
     }
 }

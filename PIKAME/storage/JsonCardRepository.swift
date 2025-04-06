@@ -50,7 +50,7 @@ class JsonCardRepository : ICardRepository {
         return true
     }
     
-    func read(by id: UUID) async -> Card? {
+    func read(by id: Int) async -> Card? {
         let file = getFile(for: id)
         guard let data = try? Data(contentsOf: file) else {
             return nil
@@ -64,7 +64,7 @@ class JsonCardRepository : ICardRepository {
         return nil
     }
     
-    func delete(by id: UUID) async -> Bool {
+    func delete(by id: Int) async -> Bool {
         return true
     }
     
@@ -72,8 +72,8 @@ class JsonCardRepository : ICardRepository {
         return getFile(for: model.getUniqueId())
     }
         
-    func getFile(for id: UUID) -> URL {
-        return cardFolder.appendingPathComponent("\(id.uuidString).json")
+    func getFile(for id: Int) -> URL {
+        return cardFolder.appendingPathComponent("\(id).json")
     }
     
 }

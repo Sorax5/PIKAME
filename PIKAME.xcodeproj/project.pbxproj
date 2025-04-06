@@ -30,6 +30,8 @@
 		9933637F2D91833E00C25DB1 /* JsonCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933637C2D91833E00C25DB1 /* JsonCardRepository.swift */; };
 		99AB4E502D91917D002D76DA /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AB4E4F2D919173002D76DA /* CardService.swift */; };
 		99AB4E552D91A9E4002D76DA /* data.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 99AB4E542D91A9E4002D76DA /* data.bundle */; };
+		99AF95BF2DA02B2D0067D67C /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AF95BE2DA02B280067D67C /* PlayerService.swift */; };
+		99AF95C12DA02BEF0067D67C /* PlayerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AF95C02DA02BEC0067D67C /* PlayerDTO.swift */; };
 		99B36D302D986FCE00111B7C /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B36D2F2D986FCE00111B7C /* ShopViewController.swift */; };
 		99B36D322D99990F00111B7C /* BuyableCardDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B36D312D99990F00111B7C /* BuyableCardDataViewController.swift */; };
 		99B4EDC22D91DFCF0046259E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4EDC12D91DFCC0046259E /* Player.swift */; };
@@ -70,6 +72,8 @@
 		9933637C2D91833E00C25DB1 /* JsonCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonCardRepository.swift; sourceTree = "<group>"; };
 		99AB4E4F2D919173002D76DA /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
 		99AB4E542D91A9E4002D76DA /* data.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = data.bundle; sourceTree = "<group>"; };
+		99AF95BE2DA02B280067D67C /* PlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
+		99AF95C02DA02BEC0067D67C /* PlayerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDTO.swift; sourceTree = "<group>"; };
 		99B36D2F2D986FCE00111B7C /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		99B36D312D99990F00111B7C /* BuyableCardDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyableCardDataViewController.swift; sourceTree = "<group>"; };
 		99B4EDC12D91DFCC0046259E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 		99AB4E4E2D91916A002D76DA /* service */ = {
 			isa = PBXGroup;
 			children = (
+				99AF95BE2DA02B280067D67C /* PlayerService.swift */,
 				99B4EDC92D91E29A0046259E /* OwnedCardService.swift */,
 				99AB4E4F2D919173002D76DA /* CardService.swift */,
 			);
@@ -211,6 +216,7 @@
 		99B4EDC62D91E1890046259E /* dto */ = {
 			isa = PBXGroup;
 			children = (
+				99AF95C02DA02BEC0067D67C /* PlayerDTO.swift */,
 				99BB76312D96EBDF009C696A /* CardDTO.swift */,
 				99B4EDC72D91E1B40046259E /* OwnedCardDTO.swift */,
 				2DBDE18F2D9C10BE00883FA2 /* EnemyDTO.swift */,
@@ -298,6 +304,7 @@
 				993363782D9180AA00C25DB1 /* ICardRepository.swift in Sources */,
 				993363792D9180AA00C25DB1 /* IRepository.swift in Sources */,
 				99BB76292D95FFE0009C696A /* PikameNavigationViewController.swift in Sources */,
+				99AF95BF2DA02B2D0067D67C /* PlayerService.swift in Sources */,
 				2DBDE1902D9C10BE00883FA2 /* EnemyDTO.swift in Sources */,
 				99BB762A2D95FFE0009C696A /* SplashViewController.swift in Sources */,
 				0A19C3A02D8C69260042E5F0 /* AppDelegate.swift in Sources */,
@@ -306,6 +313,7 @@
 				2D6B87862D9409EC001CEABC /* UICard.swift in Sources */,
 				99B4EDCA2D91E29F0046259E /* OwnedCardService.swift in Sources */,
 				99B4EDCC2D91E3040046259E /* IOwnedCardRepository.swift in Sources */,
+				99AF95C12DA02BEF0067D67C /* PlayerDTO.swift in Sources */,
 				0AE65B832D9BE1E000414A1E /* BoosterViewController.swift in Sources */,
 				9933637F2D91833E00C25DB1 /* JsonCardRepository.swift in Sources */,
 				99AB4E502D91917D002D76DA /* CardService.swift in Sources */,

@@ -30,7 +30,7 @@ class OwnedCardService {
         }
     }
     
-    func getOwnedCard(by id: UUID) -> OwnedCard? {
+    func getOwnedCard(by id: Int) -> OwnedCard? {
         return ownedCards.first { $0.getUniqueId() == id }
     }
     
@@ -61,7 +61,7 @@ class OwnedCardService {
         return ownedCards[index.row]
     }
     
-    func getByUniqueId(id: UUID) -> OwnedCard? {
+    func getByUniqueId(id: Int) -> OwnedCard? {
         return self.ownedCards.first { $0.getUniqueId() == id }
     }
     

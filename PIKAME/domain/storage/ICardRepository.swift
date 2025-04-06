@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ICardRepository : IRepository where T == Card, I == UUID{
+protocol ICardRepository : IRepository where T == Card, I == Int {
     func readAll() async -> [Card]
 }

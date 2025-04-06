@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CardDecorator {
-    func getUniqueId() -> UUID
+    func getUniqueId() -> Int
     func getName() -> String
     func getDescription() -> String
     func getType() -> Int

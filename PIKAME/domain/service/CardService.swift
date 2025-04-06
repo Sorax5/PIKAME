@@ -29,7 +29,7 @@ class CardService : NSObject {
         }
     }
     
-    func getCard(by id: UUID) -> Card? {
+    func getCard(by id: Int) -> Card? {
         return cards.first { $0.getUniqueId() == id }
     }
     

@@ -26,7 +26,7 @@ class OwnedCard : NSObject, CardDecorator {
         return card
     }
     
-    func getUniqueId() -> UUID {
+    func getUniqueId() -> Int {
         return card.getUniqueId()
     }
     

@@ -11,7 +11,7 @@ import Foundation
  Représente une carte sérializable
  */
 struct CardDTO : Codable {
-    public var uniqueId : UUID
+    public var uniqueId : Int
     public var name : String
     public var description : String
     public var type : Int

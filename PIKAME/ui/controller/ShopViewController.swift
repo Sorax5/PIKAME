@@ -9,13 +9,19 @@ import UIKit
 
 class ShopViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    private let boosterPrice = 10
+    
     @IBOutlet weak var buyableCardsCollection: UICollectionView!
     
     private var ownedCardService: OwnedCardService?
     private var cardService : CardService?
     private var buyableCards: [OwnedCard] = []
     
+    @IBOutlet weak var buyBoosterButton: UIButton!
+    @IBOutlet weak var argentLabel: UILabel!
     private var boosterCards: Array<Card> = []
+    
+    private var moneyObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +29,23 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.ownedCardService = Application.INSTANCE.getOwnedCardService()
         self.cardService = Application.INSTANCE.getCardService()
         
+        let player = Application.INSTANCE.getPlayer()
+        self.updateMoney(player: player!)
+        self.updateBooster(player: player!)
+        self.moneyObserver = player?.observe(\.money, options: [.old, .new]) { [weak self] player, change in
+            self?.updateMoney(player: player)
+            self?.updateBooster(player: player)
+        }
+        
         let nibCell = UINib(nibName: "CardViewCell", bundle: nil)
         buyableCardsCollection.register(nibCell, forCellWithReuseIdentifier: "Cell")
         
         buyableCardsCollection.dataSource = self
         buyableCardsCollection.delegate = self
+        
+        buyableCardsCollection.backgroundColor = .none
+        
+        
         
         chooseRandomCard()
     }
@@ -70,6 +88,13 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @IBAction func OnBoosterButtonClick(_ sender: Any) {
+        let player = Application.INSTANCE.getPlayer()
+        if player!.money < self.boosterPrice {
+            return
+        }
+        
+        player!.money -= self.boosterPrice
+        
         self.boosterCards = self.cardService!.openBooster()
         
         for choosedCard in self.boosterCards {
@@ -92,5 +117,23 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
         self.buyableCardsCollection.reloadData()
+    }
+    
+    private func updateMoney(player: Player){
+        self.argentLabel.text = String(player.money) + " Pikacoin"
+    }
+    
+    private func updateBooster(player: Player){
+        if player.money < boosterPrice {
+            buyBoosterButton.isEnabled = false
+            buyBoosterButton.backgroundColor = .red
+        }
+        else {
+            buyBoosterButton.isEnabled = true
+            buyBoosterButton.backgroundColor = .systemBlue
+        }
+        
+        buyBoosterButton.titleLabel?.text = "Acheter un booster pour " + String(boosterPrice) + " Pikacoin"
+        
     }
 }
