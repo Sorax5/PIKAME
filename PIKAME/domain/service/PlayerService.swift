@@ -31,15 +31,20 @@ class PlayerService {
                 let decoder = JSONDecoder()
                 let dto = try decoder.decode(PlayerDTO.self, from: data)
                 
-                var equippedCards: [OwnedCard] = []
+                player = Player(dto: dto)
                 
-                for cardId in dto.equippedCards {
-                    if let ownedCard = OwnedCardService?.getOwnedCard(by: cardId) {
-                        equippedCards.append(ownedCard)
-                    }
+                if let firstHeroId = dto.firstHero, let firstHeroCard = OwnedCardService?.getOwnedCard(by: firstHeroId) {
+                    player?.firstHero = firstHeroCard
                 }
                 
-                player = Player(dto: dto, equippedCards: equippedCards)
+                if let secondHeroId = dto.secondHero, let secondHeroCard = OwnedCardService?.getOwnedCard(by: secondHeroId) {
+                    player?.secondHero = secondHeroCard
+                }
+                
+                if let objectID = dto.object, let objectCard = OwnedCardService?.getOwnedCard(by: objectID) {
+                    player?.object = objectCard
+                }
+                
             } catch {
                 print("Error loading player: \(error)")
             }
@@ -59,7 +64,7 @@ class PlayerService {
         guard let player = player else { return }
         
         let defaults = UserDefaults.standard
-        let dto = PlayerDTO(money: player.money, equippedCards: player.ownedCards.map { $0.getUniqueId() })
+        let dto = PlayerDTO(money: player.money, firstHero: player.firstHero?.getUniqueId(), secondHero: player.secondHero?.getUniqueId(), object: player.object?.getUniqueId())
         
         do {
             let encoder = JSONEncoder()

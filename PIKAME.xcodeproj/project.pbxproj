@@ -13,6 +13,7 @@
 		0A19C3A92D8C69270042E5F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A19C3A82D8C69270042E5F0 /* Assets.xcassets */; };
 		0A19C3AC2D8C69270042E5F0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0A19C3AB2D8C69270042E5F0 /* Base */; };
 		0A19C3B82D8C6C570042E5F0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A19C3B72D8C6C570042E5F0 /* Card.swift */; };
+		0A8A15202DA51974009B57A8 /* EquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8A151F2DA51974009B57A8 /* EquipmentViewController.swift */; };
 		0AE439E82D9581150005936C /* CardDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE439E72D9581150005936C /* CardDecorator.swift */; };
 		0AE439EA2D9587400005936C /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE439E92D9587400005936C /* Application.swift */; };
 		0AE439F82D9594CC0005936C /* OwnedCardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE439F72D9594CC0005936C /* OwnedCardsCollectionViewController.swift */; };
@@ -20,7 +21,6 @@
 		0AE65B852D9BED4100414A1E /* BoosterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE65B842D9BED4100414A1E /* BoosterResultViewController.swift */; };
 		0AE65B882D9BF35D00414A1E /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE65B862D9BF35D00414A1E /* CardViewCell.swift */; };
 		0AE65B892D9BF35D00414A1E /* CardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AE65B872D9BF35D00414A1E /* CardViewCell.xib */; };
-		0AF29B252D9C1AFC008EECB1 /* RoundUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF29B242D9C1AFC008EECB1 /* RoundUIViewController.swift */; };
 		2D6B87862D9409EC001CEABC /* UICard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6B87852D9409EC001CEABC /* UICard.swift */; };
 		2D6B87882D9409FE001CEABC /* UICard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6B87872D9409FE001CEABC /* UICard.xib */; };
 		2DBDE18E2D9C0FAA00883FA2 /* InFightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDE18D2D9C0FAA00883FA2 /* InFightViewController.swift */; };
@@ -55,6 +55,7 @@
 		0A19C3AB2D8C69270042E5F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A19C3AD2D8C69270042E5F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A19C3B72D8C6C570042E5F0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		0A8A151F2DA51974009B57A8 /* EquipmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentViewController.swift; sourceTree = "<group>"; };
 		0AE439E72D9581150005936C /* CardDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDecorator.swift; sourceTree = "<group>"; };
 		0AE439E92D9587400005936C /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		0AE439F72D9594CC0005936C /* OwnedCardsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCardsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +63,6 @@
 		0AE65B842D9BED4100414A1E /* BoosterResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoosterResultViewController.swift; sourceTree = "<group>"; };
 		0AE65B862D9BF35D00414A1E /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		0AE65B872D9BF35D00414A1E /* CardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewCell.xib; sourceTree = "<group>"; };
-		0AF29B242D9C1AFC008EECB1 /* RoundUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundUIViewController.swift; sourceTree = "<group>"; };
 		2D6B87852D9409EC001CEABC /* UICard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICard.swift; sourceTree = "<group>"; };
 		2D6B87872D9409FE001CEABC /* UICard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UICard.xib; sourceTree = "<group>"; };
 		2DBDE18D2D9C0FAA00883FA2 /* InFightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InFightViewController.swift; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 				0AE65B822D9BE1E000414A1E /* BoosterViewController.swift */,
 				0AE65B842D9BED4100414A1E /* BoosterResultViewController.swift */,
 				2DBDE18D2D9C0FAA00883FA2 /* InFightViewController.swift */,
-				0AF29B242D9C1AFC008EECB1 /* RoundUIViewController.swift */,
+				0A8A151F2DA51974009B57A8 /* EquipmentViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -308,11 +308,11 @@
 				2DBDE1902D9C10BE00883FA2 /* EnemyDTO.swift in Sources */,
 				99BB762A2D95FFE0009C696A /* SplashViewController.swift in Sources */,
 				0A19C3A02D8C69260042E5F0 /* AppDelegate.swift in Sources */,
-				0AF29B252D9C1AFC008EECB1 /* RoundUIViewController.swift in Sources */,
 				0A19C3A22D8C69260042E5F0 /* SceneDelegate.swift in Sources */,
 				2D6B87862D9409EC001CEABC /* UICard.swift in Sources */,
 				99B4EDCA2D91E29F0046259E /* OwnedCardService.swift in Sources */,
 				99B4EDCC2D91E3040046259E /* IOwnedCardRepository.swift in Sources */,
+				0A8A15202DA51974009B57A8 /* EquipmentViewController.swift in Sources */,
 				99AF95C12DA02BEF0067D67C /* PlayerDTO.swift in Sources */,
 				0AE65B832D9BE1E000414A1E /* BoosterViewController.swift in Sources */,
 				9933637F2D91833E00C25DB1 /* JsonCardRepository.swift in Sources */,

@@ -9,11 +9,13 @@ import Foundation
 
 class Player : NSObject {
     @objc dynamic var money : Int
-    @objc dynamic var ownedCards : [OwnedCard] = []
     
-    init(dto: PlayerDTO, equippedCards: [OwnedCard]) {
-        self.money = 0
-        self.ownedCards = equippedCards
+    @objc dynamic var firstHero: OwnedCard?
+    @objc dynamic var secondHero: OwnedCard?
+    @objc dynamic var object: OwnedCard?
+    
+    init(dto: PlayerDTO) {
+        self.money = dto.money
     }
     
     override init() {
