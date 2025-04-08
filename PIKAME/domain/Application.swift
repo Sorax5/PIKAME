@@ -8,8 +8,10 @@
 import Foundation
 import UIKit
 
+/// quand toutes les données sont chargés
 typealias DataLoaded = () -> Void
 
+/// Singleton permettant de plus facilement passé les données entre les vues (on utilise toujours les prepare)
 class Application {
     static let INSTANCE = Application()
     
@@ -17,6 +19,7 @@ class Application {
     private let ownedCardService : OwnedCardService
     private let playerService: PlayerService
     
+    /// couleur associé a la rareté de la carte
     private let rarity: Array<UIColor> = [
         .white,
         .systemGreen,
@@ -25,11 +28,13 @@ class Application {
         .systemPurple
     ]
     
+    /// label dy type de carte
     private let type: Array<String> = [
         "Equipement",
         "Heros"
     ]
     
+    /// prix selon la rareté
     private let price: Array<Int> = [
         5,
         8,

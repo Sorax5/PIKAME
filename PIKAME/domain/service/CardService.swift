@@ -7,14 +7,17 @@
 
 import Foundation
 
+/// Quand les cartes ont terminé de chargé
 typealias CardLoadAction = ([Card]) -> Void
 
+/// Charge les cartes définis dans un bundle depuis des fichiers JSON
 class CardService : NSObject {
     private var repository : any ICardRepository
     private var cards : [Card] = []
     
     public var OnCardLoaded : [CardLoadAction] = []
     
+    /// la rareté de chaque carte
     private let rarityWeights: Array<Double> = [0.5, 0.3, 0.15, 0.04, 0.01]
     
     init(repository: some ICardRepository) {

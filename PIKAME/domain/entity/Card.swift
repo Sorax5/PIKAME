@@ -7,10 +7,8 @@
 
 import Foundation
 
-/**
- Représente une carte sérializable
- */
-class Card : Codable, CardDecorator {
+/// Représente une carte
+class Card : CardDecorator {
     private var uniqueId : Int
     private var name : String
     private var description : String

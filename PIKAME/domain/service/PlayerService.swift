@@ -7,8 +7,11 @@
 
 import Foundation
 
+/// Callback appellé quand le joueur a terminé de charger ses données
 typealias OnplayerLoadAction = (Player?) -> Void
 
+/// S'occuper des actions en rapport avec le joueur,
+/// n'utilise pas de Repository car pas eu le temps
 class PlayerService {
     private var player: Player?
     private var OwnedCardService: OwnedCardService?
@@ -24,6 +27,10 @@ class PlayerService {
         return player
     }
     
+    /// Charge les données du joueur de façons asynchrone
+    /// On utilise les UserDefaults
+    /// On récupère le json de player pour le déserializer en DTO
+    /// On récupère les cardes équipé par le joueur pour simplifier l'accès.
     public func loadPlayer() async {
         let defaults = UserDefaults.standard
         if let data = defaults.data(forKey: "player") {
@@ -60,6 +67,7 @@ class PlayerService {
         }
     }
     
+    /// Sauvegarde le json du player dans les UserDefaults
     public func savePlayer() {
         guard let player = player else { return }
         

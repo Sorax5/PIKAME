@@ -7,7 +7,9 @@
 
 import Foundation
 
+/// Représente le joueur
 class Player : NSObject {
+    /// argent que possède le joueur
     @objc dynamic var money : Int
     
     @objc dynamic var firstHero: OwnedCard?

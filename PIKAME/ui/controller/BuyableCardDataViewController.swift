@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Dans le cas ou c'est une carte qui as été selectionné de manière aléatoire et qu'on veux l'acheter
 class BuyableCardDataViewController: UIViewController {
     
     @IBOutlet weak var name: UILabel!

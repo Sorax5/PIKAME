@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// charge les données dans les bundle et document de façons asynchrone donc on dois attendre que toute les données soient chargé avant de les utilisés
 class SplashViewController: UIViewController {
 
     @IBOutlet weak var loading: UIActivityIndicatorView!

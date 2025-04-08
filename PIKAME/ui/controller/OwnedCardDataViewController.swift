@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Affiche les données de la carte qu'on possède
 class OwnedCardDataViewController: UIViewController {
     
     @IBOutlet weak var name: UILabel!

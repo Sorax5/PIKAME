@@ -7,10 +7,14 @@
 
 import Foundation
 
+/// Quand les cartes sont chargés
 typealias OwnedCardLoadAction = ([OwnedCard]) -> Void
 
+/// Quand une carte est ajouté dans les carte possédé
 typealias OwnedCardAddAction = (OwnedCard) -> Void
 
+/// Gère les cartes que l'ont possède
+/// Vus que OwnedCard ne dépend pas de Player on externalise
 class OwnedCardService {
     private var repository: any IOwnedCardRepository
     private var ownedCards: [OwnedCard]

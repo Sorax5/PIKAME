@@ -7,6 +7,8 @@
 
 import Foundation
 
-protocol IOwnedCardRepository : IRepository where T == OwnedCard, I == UUID{
+/// Gère le CRUD de OwnedCard avec comme identifiant de carte un Int
+protocol IOwnedCardRepository : IRepository where T == OwnedCard, I == Int{
+    /// permet de récupérer la liste de toutes les cartes en mémoire
     func readAll() async -> [OwnedCard]
 }
