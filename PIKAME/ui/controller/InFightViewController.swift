@@ -142,8 +142,12 @@ class InFightViewController: UIViewController {
             break
         }
     }
+    @IBAction func click(_ sender: UITapGestureRecognizer) {
+        print("truc")
+    }
     
     @IBAction func MonsterClick(_ sender: UITapGestureRecognizer) {
+        print("coucou")
         if inFight {
             hit()
         } else {

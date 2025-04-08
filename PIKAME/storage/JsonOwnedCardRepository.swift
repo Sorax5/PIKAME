@@ -66,7 +66,7 @@ class JsonOwnedCardRepository: IOwnedCardRepository {
         }
     }
     
-    func read(by id: UUID) async -> OwnedCard? {
+    func read(by id: Int) async -> OwnedCard? {
         let fileURL = saveFolder.appendingPathComponent("\(id).json")
         
         do {
@@ -97,7 +97,7 @@ class JsonOwnedCardRepository: IOwnedCardRepository {
         }
     }
     
-    func delete(by id: UUID) async -> Bool {
+    func delete(by id: Int) async -> Bool {
         let fileURL = saveFolder.appendingPathComponent("\(id).json")
         
         do {

@@ -51,13 +51,7 @@ class JsonCardRepository : ICardRepository {
     }
     
     func read(by id: Int) async -> Card? {
-        let file = getFile(for: id)
-        guard let data = try? Data(contentsOf: file) else {
-            return nil
-        }
-        
-        let decoder = JSONDecoder()
-        return try! decoder.decode(Card.self, from: data)
+        return nil
     }
     
     func update(_ model: Card) async -> Card? {

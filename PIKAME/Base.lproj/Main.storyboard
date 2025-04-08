@@ -179,7 +179,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="dvI-Yv-TzO" appends="YES" id="OeN-Yo-hbH"/>
+                                    <outletCollection property="gestureRecognizers" destination="lEF-nO-qW4" appends="YES" id="lMH-hZ-1fj"/>
                                 </connections>
                             </imageView>
                         </subviews>
@@ -201,9 +201,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PqC-Wc-x7q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="dvI-Yv-TzO">
+                <tapGestureRecognizer id="lEF-nO-qW4">
                     <connections>
-                        <action selector="MonsterClick:" destination="VzW-HY-X6H" id="rYt-BG-DPd"/>
+                        <action selector="click:" destination="VzW-HY-X6H" id="b3B-Iz-oW8"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
