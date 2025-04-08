@@ -15,7 +15,6 @@ class InFightViewController: UIViewController {
     @IBOutlet weak var dpsLabel: UILabel!
     @IBOutlet weak var hpBar: UIProgressView!
     @IBOutlet weak var infoLabel: UILabel!
-    
     @IBOutlet weak var heros1: UIImageView!
     @IBOutlet weak var heros2: UIImageView!
     @IBOutlet weak var heros3: UIImageView!
@@ -25,8 +24,10 @@ class InFightViewController: UIViewController {
     var enemies: Array<EnemyDTO> = []
     var level = 0
     
+    @IBOutlet weak var continueButton: UIButton!
     var inFight : Bool = false
     var timer : Timer?
+    var maxcountdown: Double = 15
     var countdown : Double = 15
     var hp : Int = 0
     var maxhp : Int = 0
@@ -69,6 +70,14 @@ class InFightViewController: UIViewController {
         return damage
     }
 
+    @IBAction func continueButton(_ sender: Any) {
+        continueButton.isEnabled = false
+        continueButton.isHidden = true
+        
+        inFight = false
+        
+        loadLevel(niveau: level)
+    }
     
     func loadEnemies() -> [EnemyDTO]? {
         guard let bundleURL = Bundle.main.url(forResource: "data", withExtension: "bundle"),
@@ -103,6 +112,9 @@ class InFightViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        continueButton.isEnabled = false
+        continueButton.isHidden = true
+        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
         swipeLeft.direction = .left
         view.addGestureRecognizer(swipeLeft)
@@ -142,6 +154,7 @@ class InFightViewController: UIViewController {
             break
         }
     }
+    
     @IBAction func MonsterClick(_ sender: UITapGestureRecognizer) {
         if inFight {
             hit()
@@ -149,6 +162,18 @@ class InFightViewController: UIViewController {
             inFight = true
             startCountdown()
         }
+        
+        UIView.animate(withDuration: 0.1,
+                           animations: {
+                               self.image.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                               self.image.alpha = 0.7
+                           },
+                           completion: { _ in
+                               UIView.animate(withDuration: 0.1) {
+                                   self.image.transform = CGAffineTransform.identity
+                                   self.image.alpha = 1.0
+                               }
+                           })
     }
     
     func initBattle(){
@@ -167,19 +192,20 @@ class InFightViewController: UIViewController {
         hpBar.progress = Float(hp) / Float(maxhp)
         
         if hp <= 0 {
-            infoLabel.text = "Gagné !"
+            infoLabel.text = "Gagné ! + \(3 + level) ⭐️ !"
+            Application.INSTANCE.getPlayer()?.money += 3 + level
             endFight()
         }
     }
     
     func endFight(){
         timer?.invalidate()
-        inFight = false
-        loadLevel(niveau: level)
-        Application.INSTANCE.getPlayer()?.money += 3 + level
+        continueButton.isHidden = false
+        continueButton.isEnabled = true
     }
     
     func startCountdown() {
+        countdown = maxcountdown
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
     }
 
