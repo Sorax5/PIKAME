@@ -39,6 +39,7 @@ class InFightViewController: UIViewController {
     var maxhp : Int = 0
     var clickDamage : Int = 1
     var dpsDamage : Int = 0
+    var maxlevel : Int = 0
     
     var qualificatif : Array<Array<String>> = [
         ["",""],
@@ -118,7 +119,7 @@ class InFightViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         continueButton.isEnabled = false
         continueButton.isHidden = true
         
@@ -133,7 +134,8 @@ class InFightViewController: UIViewController {
         if let data = loadEnemies() {
             enemies = data
             loadLevel(niveau: level)
-            
+            level = player.level
+            maxlevel = enemies.count * qualificatif.count - 1
         } else {
             print("Échec du chargement des ennemis")
         }
@@ -146,7 +148,7 @@ class InFightViewController: UIViewController {
         
         switch gesture.direction {
         case .left:
-            if level == enemies.count * qualificatif.count - 1 {
+            if level == player.level {
                 level = 0
             }else{
                 level += 1
@@ -154,7 +156,7 @@ class InFightViewController: UIViewController {
             loadLevel(niveau: level)
         case .right:
             if level == 0 {
-                level = enemies.count * qualificatif.count - 1
+                level = player.level
             }else{
                 level -= 1
             }
@@ -204,6 +206,12 @@ class InFightViewController: UIViewController {
         
         if hp <= 0 {
             infoLabel.text = "Gagné ! + \(3 + level) ⭐️ !"
+            if level == player.level { // niveau max du joueur
+                if level != maxlevel { // pas niveau max tout court
+                    player.level += 1 // level up !
+                    level += 1
+                }
+            }
             Application.INSTANCE.getPlayer()?.money += 3 + level
             endFight()
         }
