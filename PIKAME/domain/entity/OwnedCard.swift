@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Carte possédé par un utilisateur
 class OwnedCard : NSObject, CardDecorator {
     
     private var card : Card

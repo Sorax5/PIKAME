@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Gère le shop, les cartes que l'ont peut acheter et les booster
 class ShopViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     private let boosterPrice = 10
@@ -21,6 +22,7 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var argentLabel: UILabel!
     private var boosterCards: Array<Card> = []
     
+    /// Permet de recharger l'ui quand les valeurs d'argent du joueur change
     private var moneyObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
@@ -45,8 +47,6 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         buyableCardsCollection.backgroundColor = .none
         
-        
-        
         chooseRandomCard()
     }
     
@@ -63,6 +63,7 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         return cell
     }
     
+    /// Transition vers un show pour vérifier les détails de la carte/acheter la carte
     @objc func onCardClick(sender: UITapGestureRecognizer){
         if let cell = sender.view as? CardViewCell {
             let ownedCard = cell.getCard()
@@ -70,6 +71,7 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    /// on envoie les données de la carte cliqué
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let ownedCard = sender as? OwnedCard {
             if let vc = segue.destination as? BuyableCardDataViewController {
@@ -102,6 +104,7 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    /// prend aléatoirement des cartes
     private func chooseRandomCard(){
         self.buyableCards = []
         let ownedCards = self.ownedCardService!.getAll()

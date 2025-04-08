@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+/// Permet d'afficher la liste de carte que l'utilisateur possède
 class OwnedCardsCollectionViewController: UICollectionViewController {
     
     private var ownedCardService : OwnedCardService?
@@ -22,10 +24,12 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
         self.collectionView.delegate = self
     }
     
+    /// Maximum de carte possédé
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ownedCardService!.getAll().count
     }
     
+    /// Ajoute une action quand on clique sur la cell de la carte
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ownedcard", for: indexPath) as! CardViewCell
         if let card = ownedCardService!.getByIndex(index: indexPath){
@@ -35,6 +39,7 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    /// fais une transition vers la vue ou on a les détails de la carte
     @objc func onCardClick(sender: UITapGestureRecognizer){
         if let cell = sender.view as? CardViewCell {
             let ownedCard = cell.getCard()
@@ -42,6 +47,7 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
         }
     }
     
+    /// transfere la carte a voir  en détails
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let ownedCard = sender as? OwnedCard {
             if let vc = segue.destination as? OwnedCardDataViewController {

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Design pattern de décorator afin de simplifier l'api permet de garder les mêmes fonction pour une card et une ownedCard
 protocol CardDecorator {
     func getUniqueId() -> Int
     func getName() -> String
