@@ -10,17 +10,25 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class ChooseEquipmentCollectionViewController: UICollectionViewController {
+    
+    private var cards: [OwnedCard] = []
+    private var reason: Int = 0
+    
+    private var player: Player = Application.INSTANCE.getPlayer()!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        let nibCell = UINib(nibName: "OwnedCardViewCell", bundle: nil)
+        collectionView.register(nibCell, forCellWithReuseIdentifier: "ownedcard")
+        
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+    }
+    
+    func load(reason: Int, cards: [OwnedCard]){
+        self.reason = reason
+        self.cards = cards
     }
 
     /*
@@ -35,23 +43,35 @@ class ChooseEquipmentCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return cards.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ownedcard", for: indexPath) as! CardViewCell
+        let card = cards[indexPath.row]
+        cell.load(card: card)
+        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onCardClick)))
     
         return cell
+    }
+    
+    @objc func onCardClick(sender: UITapGestureRecognizer){
+        if let cell = sender.view as? OwnedCardViewCell {
+            if reason == 0 {
+                player.firstHero = cell.getCard()
+            }
+            else if reason == 1 {
+                player.secondHero = cell.getCard()
+            }
+            else if reason == 2 {
+                player.object = cell.getCard()
+            }
+        }
+        
+        if let navigationController = self.navigationController {
+            navigationController.popViewController(animated: true)
+        }
     }
 
     // MARK: UICollectionViewDelegate
