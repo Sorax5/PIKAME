@@ -87,5 +87,9 @@ class OwnedCardService {
         }
     }
     
+    func filterByType(type: Int) -> [OwnedCard] {
+        return ownedCards.filter { $0.getType() == type }
+    }
+    
 }
     

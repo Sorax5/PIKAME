@@ -15,11 +15,17 @@ class InFightViewController: UIViewController {
     @IBOutlet weak var dpsLabel: UILabel!
     @IBOutlet weak var hpBar: UIProgressView!
     @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var heros1: UIImageView!
-    @IBOutlet weak var heros2: UIImageView!
-    @IBOutlet weak var heros3: UIImageView!
+    
+    @IBOutlet weak var firsthero: UIView!
+    @IBOutlet weak var object: UIView!
+    @IBOutlet weak var secondHero: UIView!
+    
+    private var onFirstHeroChange: NSKeyValueObservation?
+    private var onSecondHeroChange: NSKeyValueObservation?
+    private var onObjectChange: NSKeyValueObservation?
     
     var player: Player = Application.INSTANCE.getPlayer()!
+    var ownedCardService: OwnedCardService = Application.INSTANCE.getOwnedCardService()
     
     var enemies: Array<EnemyDTO> = []
     var level = 0
@@ -133,6 +139,8 @@ class InFightViewController: UIViewController {
         } else {
             print("Échec du chargement des ennemis")
         }
+        
+        funsetupUI()
     }
 
     @objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
@@ -228,6 +236,89 @@ class InFightViewController: UIViewController {
         if countdown < 0 {
             infoLabel.text = "Perdu ! :("
             endFight()
+        }
+    }
+    
+    private func funsetupUI(){
+        self.player = Application.INSTANCE.getPlayer()!
+        
+        self.firsthero.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickFirstHero(_:))))
+        
+        self.secondHero.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickSecondHero(_:))))
+        
+        self.object.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickObject(_:))))
+        
+        self.onFirstHeroChange = player.observe(\.firstHero, options: [.new, .old]) { (card, change) in
+            if change.newValue == nil {
+                self.removeCard(view: self.firsthero)
+            }
+            else{
+                self.loadcard(ownedCard: change.newValue!!, view: self.firsthero)
+            }
+            
+        }
+        
+        self.onSecondHeroChange = player.observe(\.secondHero, options: [.new, .old]) { (card, change) in
+            if change.newValue == nil {
+                self.removeCard(view: self.secondHero)
+            }
+            else{
+                self.loadcard(ownedCard: change.newValue!!, view: self.secondHero)
+            }
+        }
+        
+        self.onObjectChange = player.observe(\.object, options: [.new, .old]) { (card, change) in
+            if change.newValue == nil {
+                self.removeCard(view: self.object)
+            }
+            else{
+                self.loadcard(ownedCard: change.newValue!!, view: self.object)
+            }
+        }
+    }
+    
+    @objc func onClickFirstHero(_ sender: UITapGestureRecognizer){
+        self.performSegue(withIdentifier: "OnEquipmentChoose", sender: 0)
+    }
+    
+    @objc func onClickSecondHero(_ sender: UITapGestureRecognizer){
+        self.performSegue(withIdentifier: "OnEquipmentChoose", sender: 1)
+    }
+    
+    @objc func onClickObject(_ sender: UITapGestureRecognizer){
+        self.performSegue(withIdentifier: "OnEquipmentChoose", sender: 2)
+    }
+    
+    private func loadcard(ownedCard: OwnedCard,view: UIView){
+        let nib = UINib(nibName: "OwnedCardViewCell", bundle: nil)
+        
+        if let cell = nib.instantiate(withOwner: nil, options: nil).first as? OwnedCardViewCell {
+            cell.load(card: ownedCard)
+            view.addSubview(cell)
+        }
+    }
+    
+    private func removeCard(view: UIView){
+        for subview in view.subviews {
+            if let cardView = subview as? OwnedCardViewCell{
+                cardView.removeFromSuperview()
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ChooseEquipmentCollectionViewController {
+            if let reason = sender as? Int {
+                if reason >= 0 && reason <= 1 {
+                    let cards = ownedCardService.filterByType(type: 1)
+                    vc.load(reason: reason, cards: cards)
+                }
+                else if reason >= 2 {
+                    let cards = ownedCardService.filterByType(type: 0)
+                    vc.load(reason: reason, cards: cards)
+                }
+                
+            }
         }
     }
     
