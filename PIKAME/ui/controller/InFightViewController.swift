@@ -29,6 +29,7 @@ class InFightViewController: UIViewController {
     
     var enemies: Array<EnemyDTO> = []
     var level = 0
+    var countToHundred : Int = 100
     
     @IBOutlet weak var continueButton: UIButton!
     var inFight : Bool = false
@@ -75,15 +76,6 @@ class InFightViewController: UIViewController {
             damage += Int(firstHero.getValue())
         }
         return damage
-    }
-
-    @IBAction func continueClick(_ sender: Any) {
-        continueButton.isEnabled = false
-        continueButton.isHidden = true
-        
-        inFight = false
-        
-        loadLevel(niveau: level)
     }
     
     func loadEnemies() -> [EnemyDTO]? {
@@ -144,6 +136,7 @@ class InFightViewController: UIViewController {
     }
 
     @objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
+        if continueButton.isEnabled {return}
         if inFight {return}
         
         switch gesture.direction {
@@ -166,14 +159,7 @@ class InFightViewController: UIViewController {
         }
     }
     
-    @IBAction func MonsterClick(_ sender: UITapGestureRecognizer) {
-        if inFight {
-            hit()
-        } else {
-            inFight = true
-            startCountdown()
-        }
-        
+    func animateHit(){
         UIView.animate(withDuration: 0.1,
                        delay: 0,
                        options: [.allowUserInteraction],
@@ -189,14 +175,21 @@ class InFightViewController: UIViewController {
                            })
     }
     
-    func initBattle(){
-        clickDamage = getClickDamage()
-        dpsDamage = getDpsDamage()
-    }
-    
-    func hit(){
-        hp -= clickDamage
-        updateLabels()
+    @IBAction func MonsterClick(_ sender: UITapGestureRecognizer) {
+        if continueButton.isEnabled {return}
+        
+        if inFight {
+            hp -= clickDamage
+            updateLabels()
+        } else {
+            inFight = true
+            clickDamage = getClickDamage()
+            dpsDamage = getDpsDamage()
+            countToHundred = 100
+            countdown = maxcountdown
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+        }
+        animateHit()
     }
     
     func updateLabels(){
@@ -205,6 +198,13 @@ class InFightViewController: UIViewController {
         hpBar.progress = Float(hp) / Float(maxhp)
         
         if hp <= 0 {
+            winFight()
+        }
+    }
+    
+    func winFight(){
+        if inFight {
+            inFight = false
             infoLabel.text = "Gagné ! + \(3 + level) ⭐️ !"
             if level == player.level { // niveau max du joueur
                 if level != maxlevel { // pas niveau max tout court
@@ -223,20 +223,31 @@ class InFightViewController: UIViewController {
         continueButton.isEnabled = true
     }
     
-    func startCountdown() {
-        countdown = maxcountdown
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
-    }
-
     @objc func updateCountdown() {
         countdown -= 0.01
+        countToHundred -= 1
+        if countToHundred == 0{
+            countToHundred = 100
+            hp -= dpsDamage
+            if dpsDamage != 0 {
+                animateHit()
+            }
+        }
         updateLabels()
         infoLabel.text = "\(String(format: "%.2f", countdown)) secondes restantes !"
         
-        if countdown < 0 {
+        if hp <= 0 {
+            winFight()
+        }else if countdown < 0 {
             infoLabel.text = "Perdu ! :("
             endFight()
         }
+    }
+    
+    @IBAction func continueClick(_ sender: Any) {
+        continueButton.isEnabled = false
+        continueButton.isHidden = true
+        loadLevel(niveau: level)
     }
     
     private func funsetupUI(){
