@@ -13,7 +13,7 @@ class CardViewCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var name: UILabel!
     
-    @IBOutlet weak var background: RoundUIViewController!
+    @IBOutlet weak var background: UIView!
     
     private var card: CardDecorator?
     
