@@ -9,6 +9,7 @@
 struct PlayerDTO : Codable {
     /// montant d'argent du joueur
     var money: Int
+    var level : Int
     
     /// identifiants liés aux la carte possédés
     var firstHero: Int?

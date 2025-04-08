@@ -69,7 +69,7 @@ class PlayerService {
         guard let player = player else { return }
         
         let defaults = UserDefaults.standard
-        var dto = PlayerDTO(money: player.money, firstHero: player.firstHero?.getUniqueId(), secondHero: player.secondHero?.getUniqueId(), object: player.object?.getUniqueId())
+        var dto = PlayerDTO(money: player.money, level:player.level, firstHero: player.firstHero?.getUniqueId(), secondHero: player.secondHero?.getUniqueId(), object: player.object?.getUniqueId())
         
         do {
             let encoder = JSONEncoder()

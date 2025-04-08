@@ -11,6 +11,7 @@ import Foundation
 class Player : NSObject {
     /// argent que possède le joueur
     @objc dynamic var money : Int
+    @objc dynamic var level : Int
     
     @objc dynamic var firstHero: OwnedCard?
     @objc dynamic var secondHero: OwnedCard?
@@ -18,9 +19,11 @@ class Player : NSObject {
     
     init(dto: PlayerDTO) {
         self.money = dto.money
+        self.level = dto.level
     }
     
     override init() {
         self.money = 0
+        self.level = 0
     }
 }
