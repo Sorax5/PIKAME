@@ -32,7 +32,7 @@ class JsonCardRepository : ICardRepository {
             let jsonFiles = files.filter { $0.pathExtension == "json" }
 
             let decoder = JSONDecoder()
-
+            
             return try jsonFiles.compactMap { url in
                 let data = try Data(contentsOf: url)
                 let dto = try decoder.decode(CardDTO.self, from: data)

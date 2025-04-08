@@ -76,7 +76,7 @@ class InFightViewController: UIViewController {
         return damage
     }
 
-    @IBAction func continueButton(_ sender: Any) {
+    @IBAction func continueClick(_ sender: Any) {
         continueButton.isEnabled = false
         continueButton.isHidden = true
         
@@ -111,6 +111,7 @@ class InFightViewController: UIViewController {
         nameLabel.text = qualif[0] + enemies[niveau % enemies.count].name + qualif[1]
         infoLabel.text = "Niveau \(niveau+1)"
         image.image = UIImage(named: enemies[niveau % enemies.count].image)
+        
         updateLabels()
     }
 
@@ -172,6 +173,8 @@ class InFightViewController: UIViewController {
         }
         
         UIView.animate(withDuration: 0.1,
+                       delay: 0,
+                       options: [.allowUserInteraction],
                            animations: {
                                self.image.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
                                self.image.alpha = 0.7
@@ -231,11 +234,11 @@ class InFightViewController: UIViewController {
     private func funsetupUI(){
         self.player = Application.INSTANCE.getPlayer()!
         
-        self.firsthero.addGestureRecognizer(UITapGestureRecognizer(target: self.firsthero, action: #selector(onClickFirstHero(_:))))
+        self.firsthero.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickFirstHero(_:))))
         
-        self.secondHero.addGestureRecognizer(UITapGestureRecognizer(target: self.secondHero, action: #selector(onClickSecondHero(_:))))
+        self.secondHero.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickSecondHero(_:))))
         
-        self.object.addGestureRecognizer(UITapGestureRecognizer(target: self.object, action: #selector(onClickObject(_:))))
+        self.object.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickObject(_:))))
         
         self.onFirstHeroChange = player.observe(\.firstHero, options: [.new, .old]) { (card, change) in
             if change.newValue == nil {

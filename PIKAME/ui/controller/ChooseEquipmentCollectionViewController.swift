@@ -48,7 +48,7 @@ class ChooseEquipmentCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ownedcard", for: indexPath) as! CardViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ownedcard", for: indexPath) as! OwnedCardViewCell
         let card = cards[indexPath.row]
         cell.load(card: card)
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onCardClick)))
@@ -67,10 +67,6 @@ class ChooseEquipmentCollectionViewController: UICollectionViewController {
             else if reason == 2 {
                 player.object = cell.getCard()
             }
-        }
-        
-        if let navigationController = self.navigationController {
-            navigationController.popViewController(animated: true)
         }
     }
 

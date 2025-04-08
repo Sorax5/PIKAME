@@ -4,11 +4,27 @@
 		"image":"redslime"
 	},
     {
-        "name":"Cyrille (Sobre)",
-        "image":"cyrille"
+        "name":"Dylan",
+        "image":"dylan"
     },
     {
         "name":"Qilby",
         "image":"qilby"
+    },
+    {
+        "name":"Scalper",
+        "image":"scalper"
+    },
+    {
+        "name":"Modérateurs Discord",
+        "image":"modo"
+    },
+    {
+        "name":"Jumeaux Etranges",
+        "image":"jumeaux"
+    },
+    {
+        "name":"Cyrille (Sobre)",
+        "image":"cyrille"
     }
 ]
