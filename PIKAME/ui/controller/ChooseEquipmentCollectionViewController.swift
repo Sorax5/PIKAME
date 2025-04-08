@@ -67,6 +67,8 @@ class ChooseEquipmentCollectionViewController: UICollectionViewController {
             else if reason == 2 {
                 player.object = cell.getCard()
             }
+            
+            self.dismiss(animated: true)
         }
     }
 
