@@ -197,6 +197,15 @@
                                     <outlet property="secondHero" destination="hLS-he-yJ5" id="alT-54-RV9"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQt-7h-g6m">
+                                <rect key="frame" x="147" y="577" width="99" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Continuer"/>
+                                <connections>
+                                    <action selector="continueClick:" destination="VzW-HY-X6H" eventType="touchUpInside" id="RCU-y7-2Hd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bCB-cI-ijO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -204,6 +213,7 @@
                     <tabBarItem key="tabBarItem" title="Combats" image="play.fill" catalog="system" selectedImage="play.fill" id="tPZ-Iu-M83"/>
                     <navigationItem key="navigationItem" id="0sJ-eZ-gKX"/>
                     <connections>
+                        <outlet property="continueButton" destination="jQt-7h-g6m" id="0MA-gq-umr"/>
                         <outlet property="dpsLabel" destination="OIE-RX-cGf" id="nhA-ef-71H"/>
                         <outlet property="hpBar" destination="gSI-4g-Izg" id="7cp-ht-t06"/>
                         <outlet property="hpLabel" destination="YmT-sP-2Na" id="qAK-CD-ATz"/>

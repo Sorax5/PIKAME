@@ -31,40 +31,6 @@ class EquipmentView: UIView {
     
     private func funsetupUI(){
         self.player = Application.INSTANCE.getPlayer()!
-        
-        self.firsthero.addGestureRecognizer(UITapGestureRecognizer(target: self.firsthero, action: #selector(onClickFirstHero(_:))))
-        
-        self.secondHero.addGestureRecognizer(UITapGestureRecognizer(target: self.secondHero, action: #selector(onClickSecondHero(_:))))
-        
-        self.object.addGestureRecognizer(UITapGestureRecognizer(target: self.object, action: #selector(onClickObject(_:))))
-        
-        self.onFirstHeroChange = player.observe(\.firstHero, options: [.new, .old]) { (card, change) in
-            if change.newValue == nil {
-                self.removeCard(view: self.firsthero)
-            }
-            else{
-                self.loadcard(ownedCard: change.newValue!!, view: self.firsthero)
-            }
-            
-        }
-        
-        self.onSecondHeroChange = player.observe(\.secondHero, options: [.new, .old]) { (card, change) in
-            if change.newValue == nil {
-                self.removeCard(view: self.secondHero)
-            }
-            else{
-                self.loadcard(ownedCard: change.newValue!!, view: self.secondHero)
-            }
-        }
-        
-        self.onObjectChange = player.observe(\.object, options: [.new, .old]) { (card, change) in
-            if change.newValue == nil {
-                self.removeCard(view: self.object)
-            }
-            else{
-                self.loadcard(ownedCard: change.newValue!!, view: self.object)
-            }
-        }
     }
     
     @objc func onClickFirstHero(_ sender: UITapGestureRecognizer){
