@@ -177,6 +177,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="redslime" translatesAutoresizingMaskIntoConstraints="NO" id="6ML-DJ-YQX">
                                 <rect key="frame" x="-4" y="235" width="400" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="dvI-Yv-TzO" appends="YES" id="OeN-Yo-hbH"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bCB-cI-ijO"/>
@@ -197,6 +201,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PqC-Wc-x7q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="dvI-Yv-TzO">
+                    <connections>
+                        <action selector="MonsterClick:" destination="VzW-HY-X6H" id="rYt-BG-DPd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5342.7480916030536" y="-622.53521126760563"/>
         </scene>
