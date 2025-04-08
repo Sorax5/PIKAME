@@ -36,8 +36,8 @@ class PlayerService {
         if let data = defaults.data(forKey: "player") {
             do {
                 let decoder = JSONDecoder()
-                let dto = try decoder.decode(PlayerDTO.self, from: data)
-                
+                var dto = try decoder.decode(PlayerDTO.self, from: data)
+                dto.firstHero = 0
                 player = Player(dto: dto)
                 
                 if let firstHeroId = dto.firstHero, let firstHeroCard = OwnedCardService?.getOwnedCard(by: firstHeroId) {
@@ -57,10 +57,7 @@ class PlayerService {
             }
         } else {
             player = Player()
-            player?.money = 0
         }
-        
-        player?.money = 50
         
         OnPlayerLoaded.forEach {
             $0(player)
@@ -72,7 +69,7 @@ class PlayerService {
         guard let player = player else { return }
         
         let defaults = UserDefaults.standard
-        let dto = PlayerDTO(money: player.money, firstHero: player.firstHero?.getUniqueId(), secondHero: player.secondHero?.getUniqueId(), object: player.object?.getUniqueId())
+        var dto = PlayerDTO(money: player.money, firstHero: player.firstHero?.getUniqueId(), secondHero: player.secondHero?.getUniqueId(), object: player.object?.getUniqueId())
         
         do {
             let encoder = JSONEncoder()
@@ -83,6 +80,4 @@ class PlayerService {
             print("Error saving player: \(error)")
         }
     }
-    
-    
 }

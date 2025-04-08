@@ -14,6 +14,7 @@
 		0A19C3AC2D8C69270042E5F0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0A19C3AB2D8C69270042E5F0 /* Base */; };
 		0A19C3B82D8C6C570042E5F0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A19C3B72D8C6C570042E5F0 /* Card.swift */; };
 		0A8A15202DA51974009B57A8 /* EquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8A151F2DA51974009B57A8 /* EquipmentViewController.swift */; };
+		0A8A15232DA547AB009B57A8 /* EquipmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8A15222DA547AB009B57A8 /* EquipmentView.swift */; };
 		0AE439E82D9581150005936C /* CardDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE439E72D9581150005936C /* CardDecorator.swift */; };
 		0AE439EA2D9587400005936C /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE439E92D9587400005936C /* Application.swift */; };
 		0AE439F82D9594CC0005936C /* OwnedCardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE439F72D9594CC0005936C /* OwnedCardsCollectionViewController.swift */; };
@@ -56,6 +57,7 @@
 		0A19C3AD2D8C69270042E5F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A19C3B72D8C6C570042E5F0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		0A8A151F2DA51974009B57A8 /* EquipmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentViewController.swift; sourceTree = "<group>"; };
+		0A8A15222DA547AB009B57A8 /* EquipmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentView.swift; sourceTree = "<group>"; };
 		0AE439E72D9581150005936C /* CardDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDecorator.swift; sourceTree = "<group>"; };
 		0AE439E92D9587400005936C /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		0AE439F72D9594CC0005936C /* OwnedCardsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCardsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -155,9 +157,18 @@
 			path = entity;
 			sourceTree = "<group>";
 		};
+		0A8A15212DA54799009B57A8 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0A8A15222DA547AB009B57A8 /* EquipmentView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		0AE439E62D957BB30005936C /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				0A8A15212DA54799009B57A8 /* view */,
 				0AE439EC2D9590F70005936C /* controller */,
 				2D6B87852D9409EC001CEABC /* UICard.swift */,
 				2D6B87872D9409FE001CEABC /* UICard.xib */,
@@ -299,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99BB76302D96D931009C696A /* OwnedCardDataViewController.swift in Sources */,
+				0A8A15232DA547AB009B57A8 /* EquipmentView.swift in Sources */,
 				99B4EDC52D91DFFB0046259E /* OwnedCard.swift in Sources */,
 				0AE439EA2D9587400005936C /* Application.swift in Sources */,
 				993363782D9180AA00C25DB1 /* ICardRepository.swift in Sources */,
