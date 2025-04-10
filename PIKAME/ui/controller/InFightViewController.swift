@@ -210,6 +210,7 @@ class InFightViewController: UIViewController {
         continueButton.isEnabled = true
         inFight = false
         if hp < 1 { // On est sympa si on est à 0,5 on accepte la victoire
+            hp = 0
             infoLabel.text = "Gagné ! + \(3 + level) ⭐️ !"
             if level == player.level { // niveau max du joueur
                 if level != maxlevel { // pas niveau max tout court
