@@ -80,6 +80,9 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let ownedCard = sender as? OwnedCard {
             if let vc = segue.destination as? BuyableCardDataViewController {
+                vc.onDismiss = { data in
+                    self.chooseRandomCard()
+                }
                 vc.load(card: ownedCard.getCard())
             }
         }
@@ -167,4 +170,5 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
             rerollButton.backgroundColor = .systemBlue
         }
     }
+
 }
