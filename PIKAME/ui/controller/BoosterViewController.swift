@@ -10,7 +10,7 @@ import UIKit
 class BoosterViewController: UIViewController {
     
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var resultsButton: UIButton!
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var desc: UILabel!
@@ -25,7 +25,7 @@ class BoosterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backButton.isHidden = true
+        resultsButton.isHidden = true
         nextButton.isHidden = false
         
         let currentCard = self.cards[currentCardIndex]
@@ -44,7 +44,7 @@ class BoosterViewController: UIViewController {
         let currentCard = self.cards[currentCardIndex]
         loadCard(card: currentCard)
         if currentCardIndex >= self.cards.count-1 {
-            backButton.isHidden = false
+            resultsButton.isHidden = false
             nextButton.isHidden = true
         }
     }
@@ -70,5 +70,4 @@ class BoosterViewController: UIViewController {
             view.cards = self.cards
         }
     }
-
 }

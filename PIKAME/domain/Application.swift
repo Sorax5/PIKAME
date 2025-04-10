@@ -21,7 +21,7 @@ class Application {
     
     /// couleur associé a la rareté de la carte
     private let rarity: Array<UIColor> = [
-        .white,
+        .gray,
         .systemGreen,
         .blue,
         .systemYellow,

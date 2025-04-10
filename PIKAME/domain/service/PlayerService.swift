@@ -59,6 +59,8 @@ class PlayerService {
             player = Player()
         }
         
+        player?.money = 200
+        
         OnPlayerLoaded.forEach {
             $0(player)
         }

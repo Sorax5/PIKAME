@@ -11,6 +11,7 @@ import UIKit
 class ShopViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     private let boosterPrice = 10
+    private let REROLL_PRICE = 15
     
     @IBOutlet weak var buyableCardsCollection: UICollectionView!
     
@@ -19,7 +20,9 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     private var buyableCards: [OwnedCard] = []
     
     @IBOutlet weak var buyBoosterButton: UIButton!
+    @IBOutlet weak var rerollButton: UIButton!
     @IBOutlet weak var argentLabel: UILabel!
+    
     private var boosterCards: Array<Card> = []
     
     /// Permet de recharger l'ui quand les valeurs d'argent du joueur change
@@ -34,9 +37,11 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         let player = Application.INSTANCE.getPlayer()
         self.updateMoney(player: player!)
         self.updateBooster(player: player!)
+        
         self.moneyObserver = player?.observe(\.money, options: [.old, .new]) { [weak self] player, change in
             self?.updateMoney(player: player)
             self?.updateBooster(player: player)
+            self?.updateReroll(player: player)
         }
         
         let nibCell = UINib(nibName: "CardViewCell", bundle: nil)
@@ -86,6 +91,11 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     @IBAction func OnRerollButtonClick(_ sender: Any) {
+        let player = Application.INSTANCE.getPlayer()
+        if player!.money < self.REROLL_PRICE {
+            return
+        }
+        player!.money -= self.REROLL_PRICE
         chooseRandomCard()
     }
     
@@ -105,25 +115,33 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     /// prend aléatoirement des cartes
-    private func chooseRandomCard(){
+    private func chooseRandomCard() {
         self.buyableCards = []
         let ownedCards = self.ownedCardService!.getAll()
-        
-        if ownedCards.count < 5 {
+
+        if ownedCards.count < 2 {
             self.buyableCards.append(contentsOf: ownedCards)
             return
         }
-        
-        for _ in 0...5 {
-            let randomIndex = Int.random(in: 0..<ownedCards.count)
-            self.buyableCards.append(ownedCards[randomIndex])
+
+        var availableIndices = Array(0..<ownedCards.count)
+
+        for _ in 0..<3 {
+            if availableIndices.isEmpty {
+                break
+            }
+
+            let randomIndex = Int.random(in: 0..<availableIndices.count)
+            let selectedIndex = availableIndices.remove(at: randomIndex)
+            self.buyableCards.append(ownedCards[selectedIndex])
         }
-        
+
         self.buyableCardsCollection.reloadData()
     }
+
     
     private func updateMoney(player: Player){
-        self.argentLabel.text = String(player.money) + " Pikacoin"
+        self.argentLabel.text = String(player.money) + " Pikacoin ⭐️"
     }
     
     private func updateBooster(player: Player){
@@ -136,7 +154,17 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
             buyBoosterButton.backgroundColor = .systemBlue
         }
         
-        buyBoosterButton.titleLabel?.text = "Acheter un booster pour " + String(boosterPrice) + " Pikacoin"
-        
+        buyBoosterButton.titleLabel?.text = "Acheter un booster pour " + String(boosterPrice) + " Pikacoin ⭐️"
+    }
+    
+    private func updateReroll(player: Player){
+        if player.money < REROLL_PRICE {
+            rerollButton.isEnabled = false
+            rerollButton.backgroundColor = .red
+        }
+        else {
+            rerollButton.isEnabled = true
+            rerollButton.backgroundColor = .systemBlue
+        }
     }
 }

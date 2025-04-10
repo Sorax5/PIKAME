@@ -286,6 +286,18 @@ class InFightViewController: UIViewController {
                 self.loadcard(ownedCard: change.newValue!!, view: self.object)
             }
         }
+        
+        if let firstHero = player.firstHero{
+            self.loadcard(ownedCard: firstHero, view: self.firsthero)
+        }
+        
+        if let secondHero = player.secondHero{
+            self.loadcard(ownedCard: secondHero, view: self.secondHero)
+        }
+        
+        if let object = player.object{
+            self.loadcard(ownedCard: object, view: self.object)
+        }
     }
     
     @objc func onClickFirstHero(_ sender: UITapGestureRecognizer){
@@ -321,7 +333,13 @@ class InFightViewController: UIViewController {
         if let vc = segue.destination as? ChooseEquipmentCollectionViewController {
             if let reason = sender as? Int {
                 if reason >= 0 && reason <= 1 {
-                    let cards = ownedCardService.filterByType(type: 1)
+                    var cards = ownedCardService.filterByType(type: 1)
+                    if let firstHero = player.firstHero {
+                        cards.removeAll { $0 == firstHero }
+                    }
+                    if let secondHero = player.secondHero {
+                        cards.removeAll { $0 == secondHero }
+                    }
                     vc.load(reason: reason, cards: cards)
                 }
                 else if reason >= 2 {

@@ -1,0 +1,9 @@
+{
+    "uniqueId": 4,
+    "name": "Hydrogen Bomb",
+    "rarity": 4,
+    "value": 15.0,
+    "type": 0,
+    "description": "C'est qu'une bombe, rien de bien offensif",
+    "img": "4.png"
+}
