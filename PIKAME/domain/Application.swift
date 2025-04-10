@@ -24,8 +24,8 @@ class Application {
         .gray,
         .systemGreen,
         .blue,
-        .systemYellow,
-        .systemPurple
+        .systemPurple,
+        .systemYellow
     ]
     
     /// label dy type de carte

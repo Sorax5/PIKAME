@@ -9,6 +9,7 @@ import UIKit
 
 /// Dans le cas ou c'est une carte qui as été selectionné de manière aléatoire et qu'on veux l'acheter
 class BuyableCardDataViewController: UIViewController {
+    var onDismiss: ((Card) -> Void)?
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var image: UIImageView!
@@ -79,7 +80,7 @@ class BuyableCardDataViewController: UIViewController {
         ownedCardService!.addCard(card: self.card!)
         self.player?.money -= Application.INSTANCE.getCardPrice(rarity: card!.getRarity())
         
-        
+        self.onDismiss?(self.card!)
         self.dismiss(animated: true, completion: nil)
     }
     
