@@ -18,7 +18,8 @@ class CardService : NSObject {
     public var OnCardLoaded : [CardLoadAction] = []
     
     /// la rareté de chaque carte
-    private let rarityWeights: Array<Double> = [0.5, 0.3, 0.15, 0.04, 0.01]
+    private let rarityWeights: Array<Double> = [70, 25, 4, 1, 0]
+    private let rarityWeightsRare: Array<Double> = [0, 40, 30, 20, 10]
     
     init(repository: some ICardRepository) {
         self.repository = repository
@@ -44,40 +45,47 @@ class CardService : NSObject {
         cards.append(card)
     }
     
-    /// fais avec l'IA le chat
-    /// on récupère un dictionnaire de toute les cartes avec leur poids selon la liste des poids
-    /// on additione tout les poids
-    /// on choisit un poids entre 0 et le total
-    /// on prend la carte dans notre dictionnaire de poids
-    /// dans le cas ou il y a un problème on prend une carte aléatoire
-    private func selectCardWithWeight() -> Card {
-        var weightedCards: [(card: Card, weight: Double)] = []
 
-        for card in cards {
-            let weight = rarityWeights[card.getRarity()]
-            weightedCards.append((card: card, weight: weight))
+    private func selectRarityWithWeight(isRare: Bool) -> Int {
+        var pourcentages = rarityWeights
+        if isRare {
+            pourcentages = rarityWeightsRare
         }
-
-        let totalWeight = weightedCards.reduce(0) { $0 + $1.weight }
-        let randomWeight = Double.random(in: 0..<totalWeight)
-        var cumulativeWeight = 0.0
-
-        for (card, weight) in weightedCards {
-            cumulativeWeight += weight
-            if randomWeight < cumulativeWeight {
-                return card
+        
+        let randomNumber = Double.random(in: 0...1) * 100
+        
+        var rarity = 0
+        var pourcentageCumule : Double = 0
+        for currentPercent in pourcentages {
+            pourcentageCumule += Double(currentPercent)
+            if randomNumber < pourcentageCumule {
+                break
+            }else{
+                rarity += 1
             }
         }
-
-        return cards.randomElement()!
+        return rarity
+    }
+    
+    private func chooseCardOfRarity(rarity: Int) -> Card {
+        return self.cards.filter {
+            $0.getRarity() == rarity
+        }.randomElement()!
+    }
+    
+    private func selectCardWithWeight(isRare: Bool) -> Card {
+        let rarity = selectRarityWithWeight(isRare: isRare)
+        return chooseCardOfRarity(rarity: rarity)
+        
     }
     
     func openBooster() -> [Card] {
         var choosedCards : [Card] = []
-        for _ in 0...5 {
-            let choosedCard = selectCardWithWeight()
+        for _ in 0...4 {
+            let choosedCard = selectCardWithWeight(isRare: false)
             choosedCards.append(choosedCard)
         }
+        choosedCards.append(selectCardWithWeight(isRare: true))
         
         return choosedCards
     }
