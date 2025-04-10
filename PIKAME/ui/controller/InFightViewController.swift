@@ -29,15 +29,14 @@ class InFightViewController: UIViewController {
     
     var enemies: Array<EnemyDTO> = []
     var level = 0
-    var countToHundred : Int = 100
     
     @IBOutlet weak var continueButton: UIButton!
     var inFight : Bool = false
     var timer : Timer?
     var maxcountdown: Double = 15
     var countdown : Double = 15
-    var hp : Int = 0
-    var maxhp : Int = 0
+    var hp : Double = 0
+    var maxhp : Double = 0
     var clickDamage : Int = 1
     var dpsDamage : Int = 0
     var maxlevel : Int = 0
@@ -56,7 +55,7 @@ class InFightViewController: UIViewController {
     ]
     
     func getHp(niveau: Int) -> Int {
-        return Int(30.0 * pow(1.07, Double(niveau)))
+        return Int(30.0 * pow(1.25, Double(niveau)))
     }
     
     func getClickDamage() -> Int {
@@ -103,7 +102,7 @@ class InFightViewController: UIViewController {
     
     func loadLevel(niveau: Int) {
         let qualif = qualificatif[(niveau/enemies.count) % qualificatif.count]
-        hp = getHp(niveau: niveau)
+        hp = Double(getHp(niveau: niveau))
         maxhp = hp
         nameLabel.text = qualif[0] + enemies[niveau % enemies.count].name + qualif[1]
         infoLabel.text = "Niveau \(niveau+1)"
@@ -172,7 +171,7 @@ class InFightViewController: UIViewController {
                                self.image.alpha = 0.7
                            },
                            completion: { _ in
-                               UIView.animate(withDuration: 0.1) {
+            UIView.animate(withDuration: 0.1, delay: 0, options: [.allowUserInteraction]) {
                                    self.image.transform = CGAffineTransform.identity
                                    self.image.alpha = 1.0
                                }
@@ -183,13 +182,12 @@ class InFightViewController: UIViewController {
         if continueButton.isEnabled {return}
         
         if inFight {
-            hp -= clickDamage
+            hp -= Double(clickDamage)
             updateLabels()
         } else {
             inFight = true
             clickDamage = getClickDamage()
             dpsDamage = getDpsDamage()
-            countToHundred = 100
             countdown = maxcountdown
             timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
         }
@@ -197,26 +195,11 @@ class InFightViewController: UIViewController {
     }
     
     func updateLabels(){
-        hpLabel.text = "\(hp) / \(maxhp)"
-        dpsLabel.text = "\(dpsDamage) dégats / seconde"
+        hpLabel.text = "\(Int(hp)) / \(Int(maxhp))"
+        dpsLabel.text = "\(dpsDamage) dégâts / seconde"
         hpBar.progress = Float(hp) / Float(maxhp)
         
-        if hp <= 0 {
-            winFight()
-        }
-    }
-    
-    func winFight(){
-        if inFight {
-            inFight = false
-            infoLabel.text = "Gagné ! + \(3 + level) ⭐️ !"
-            if level == player.level { // niveau max du joueur
-                if level != maxlevel { // pas niveau max tout court
-                    player.level += 1 // level up !
-                    level += 1
-                }
-            }
-            Application.INSTANCE.getPlayer()?.money += 3 + level
+        if hp < 1 {
             endFight()
         }
     }
@@ -225,25 +208,29 @@ class InFightViewController: UIViewController {
         timer?.invalidate()
         continueButton.isHidden = false
         continueButton.isEnabled = true
+        inFight = false
+        if hp < 1 { // On est sympa si on est à 0,5 on accepte la victoire
+            infoLabel.text = "Gagné ! + \(3 + level) ⭐️ !"
+            if level == player.level { // niveau max du joueur
+                if level != maxlevel { // pas niveau max tout court
+                    player.level += 1 // level up !
+                    level += 1
+                }
+            }
+            Application.INSTANCE.getPlayer()?.money += 3 + level
+        } else {
+            infoLabel.text = "Perdu ! :("
+        }
+        
     }
     
     @objc func updateCountdown() {
         countdown -= 0.01
-        countToHundred -= 1
-        if countToHundred == 0{
-            countToHundred = 100
-            hp -= dpsDamage
-            if dpsDamage != 0 {
-                animateHit()
-            }
-        }
+        hp -= Double(dpsDamage) / 100 // degats passifs
         updateLabels()
         infoLabel.text = "\(String(format: "%.2f", countdown)) secondes restantes !"
         
-        if hp <= 0 {
-            winFight()
-        }else if countdown < 0 {
-            infoLabel.text = "Perdu ! :("
+        if hp < 1 || countdown <= 0 {
             endFight()
         }
     }
