@@ -68,7 +68,7 @@ class InFightViewController: UIViewController {
     }
     
     func herosDamage(heros : OwnedCard) -> Int {
-        return Int(heros.getValue()) + (heros.level*heros.getRarity())
+        return Int(heros.getValue()) + (heros.level*(heros.getRarity()+1))
     }
     
     func getDpsDamage() -> Int {
