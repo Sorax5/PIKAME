@@ -15,7 +15,6 @@ class BoosterViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var type: UILabel!
-    @IBOutlet weak var value: UILabel!
     @IBOutlet weak var currentCardLabel: UILabel!
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var image: UIImageView!
@@ -53,14 +52,11 @@ class BoosterViewController: UIViewController {
         name.text = card.getName()
         desc.text = card.getDescription()
         type.text = Application.INSTANCE.getType(type: card.getType())
-        value.text = String(card.getValue())
         
         let imgUi = UIImage(data: card.getImg(), scale: UIScreen.main.scale)
         image.image = imgUi
         
         background.backgroundColor = Application.INSTANCE.getRarityColor(rarity: card.getRarity())
-        
-        
         
         self.currentCardLabel.text = "Carte numéro " + String(self.currentCardIndex + 1)
     }

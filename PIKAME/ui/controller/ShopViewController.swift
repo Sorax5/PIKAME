@@ -23,6 +23,10 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var rerollButton: UIButton!
     @IBOutlet weak var argentLabel: UILabel!
     
+    @IBAction func rembobiner (_ for: UIStoryboardSegue){
+        print("c'est l'heure du rewind")
+    }
+    
     private var boosterCards: Array<Card> = []
     
     /// Permet de recharger l'ui quand les valeurs d'argent du joueur change

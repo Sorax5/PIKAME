@@ -10,6 +10,10 @@ import UIKit
 class BoosterResultViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var resultCollection: UICollectionView!
     
+    @IBAction func rembobiner (_ for: UIStoryboardSegue){
+        print("c'est l'heure du rewind")
+    }
+    
     public var cards: Array<Card> = []
 
     override func viewDidLoad() {
@@ -35,4 +39,5 @@ class BoosterResultViewController: UIViewController, UICollectionViewDataSource,
         
         return cell
     }
+
 }

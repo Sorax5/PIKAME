@@ -23,7 +23,7 @@ class Application {
     private let rarity: Array<UIColor> = [
         .gray,
         .systemGreen,
-        .blue,
+        .systemIndigo,
         .systemPurple,
         .systemYellow
     ]
