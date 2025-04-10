@@ -15,10 +15,10 @@ class BuyableCardDataViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var type: UILabel!
-    @IBOutlet weak var value: UILabel!
     @IBOutlet weak var background: UIView!
     
     @IBOutlet weak var buyButton: UIButton!
+    
     private var card : Card?
     private var player: Player?
     private var ownedCardService : OwnedCardService?
@@ -36,8 +36,7 @@ class BuyableCardDataViewController: UIViewController {
             name.text = ownedCard.getName()
             desc.text = ownedCard.getDescription()
             type.text = Application.INSTANCE.getType(type: ownedCard.getType())
-            value.text = String(ownedCard.getValue())
-            
+ 
             let imgUi = UIImage(data: ownedCard.getImg(), scale: UIScreen.main.scale)
             image.image = imgUi
             background.backgroundColor = Application.INSTANCE.getRarityColor(rarity: ownedCard.getRarity())
@@ -81,7 +80,10 @@ class BuyableCardDataViewController: UIViewController {
         self.player?.money -= Application.INSTANCE.getCardPrice(rarity: card!.getRarity())
         
         self.onDismiss?(self.card!)
-        self.dismiss(animated: true, completion: nil)
+        
+        if let nv = self.navigationController {
+            nv.popViewController(animated: true)
+        }
     }
     
 }

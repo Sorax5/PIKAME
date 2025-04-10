@@ -55,6 +55,10 @@ class OwnedCard : NSObject, CardDecorator {
         return card.getImg()
     }
     
+    func getDamage() -> Int {
+        return level * (getRarity() + 1 ) + Int(getValue())
+    }
+    
     func toDTO() -> OwnedCardDTO {
         return OwnedCardDTO(cardID: card.getUniqueId(), level: level)
     }

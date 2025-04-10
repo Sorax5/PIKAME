@@ -14,8 +14,8 @@ class OwnedCardDataViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var type: UILabel!
-    @IBOutlet weak var value: UILabel!
     @IBOutlet weak var level: UILabel!
+    @IBOutlet weak var effect: UILabel!
     
     @IBOutlet weak var background: UIView!
     private var card : OwnedCard?
@@ -28,12 +28,18 @@ class OwnedCardDataViewController: UIViewController {
             name.text = ownedCard.getName()
             desc.text = ownedCard.getDescription()
             type.text = Application.INSTANCE.getType(type: ownedCard.getType())
-            value.text = String(ownedCard.getValue())
-            
+ 
             let imgUi = UIImage(data: ownedCard.getImg(), scale: UIScreen.main.scale)
             image.image = imgUi
-            level.text = String(ownedCard.level)
+            level.text = "Niveau : " + String(ownedCard.level)
             background.backgroundColor = Application.INSTANCE.getRarityColor(rarity: ownedCard.getRarity())
+            
+            if ownedCard.getType() == 1 {
+                effect.text = "Inflige " + String(ownedCard.getDamage()) + " de dégâts par seconde."
+            }
+            else {
+                effect.text = "Ajoute " + String(ownedCard.getDamage()) + " de dégâts par clic."
+            }
         }
     }
     
