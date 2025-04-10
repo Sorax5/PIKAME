@@ -107,9 +107,13 @@ class InFightViewController: UIViewController {
         updateLabels()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        endFight()
+    }
+    
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         continueButton.isEnabled = false
         continueButton.isHidden = true
@@ -208,13 +212,13 @@ class InFightViewController: UIViewController {
         if hp < 1 { // On est sympa si on est à 0,5 on accepte la victoire
             hp = 0
             infoLabel.text = "Gagné ! + \(3 + level) ⭐️ !"
+            Application.INSTANCE.getPlayer()?.money += 3 + level
             if level == player.level { // niveau max du joueur
                 if level != maxlevel { // pas niveau max tout court
                     player.level += 1 // level up !
                     level += 1
                 }
             }
-            Application.INSTANCE.getPlayer()?.money += 3 + level
         } else {
             infoLabel.text = "Perdu ! :("
         }
