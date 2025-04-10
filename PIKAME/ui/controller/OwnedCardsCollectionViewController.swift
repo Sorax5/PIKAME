@@ -24,6 +24,12 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
         self.collectionView.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.collectionView.reloadData()
+    }
+    
     /// Maximum de carte possédé
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ownedCardService!.getAll().count
