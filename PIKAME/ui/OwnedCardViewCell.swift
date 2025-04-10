@@ -27,14 +27,14 @@ class OwnedCardViewCell: UICollectionViewCell {
         if let currentCard = self.card {
             name.text = currentCard.getName()
             name.text = currentCard.getName()
-            value.text = String(currentCard.getValue())
+            value.text = "dgt:"+String(currentCard.getDamage())
             
             let imgUI = UIImage(data: currentCard.getImg(), scale: UIScreen.main.scale)
             image.image = imgUI
             
             background.backgroundColor = Application.INSTANCE.getRarityColor(rarity: currentCard.getRarity())
             
-            level.text = String(card.level)
+            level.text = "Lvl."+String(card.level)
         }
     }
     

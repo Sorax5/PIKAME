@@ -17,7 +17,7 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         self.ownedCardService = Application.INSTANCE.getOwnedCardService()
         
-        let nibCell = UINib(nibName: "CardViewCell", bundle: nil)
+        let nibCell = UINib(nibName: "OwnedCardViewCell", bundle: nil)
         collectionView.register(nibCell, forCellWithReuseIdentifier: "ownedcard")
         
         self.collectionView.dataSource = self
@@ -37,7 +37,7 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
     
     /// Ajoute une action quand on clique sur la cell de la carte
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ownedcard", for: indexPath) as! CardViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ownedcard", for: indexPath) as! OwnedCardViewCell
         if let card = ownedCardService!.getByIndex(index: indexPath){
             cell.load(card: card)
             cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onCardClick)))

@@ -19,7 +19,7 @@ class BoosterResultViewController: UIViewController, UICollectionViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nibCell = UINib(nibName: "CardViewCell", bundle: nil)
+        let nibCell = UINib(nibName: "OwnedCardViewCell", bundle: nil)
         self.resultCollection.register(nibCell, forCellWithReuseIdentifier: "resultCard")
         
         self.resultCollection.delegate = self
@@ -33,7 +33,7 @@ class BoosterResultViewController: UIViewController, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "resultCard", for: indexPath) as! CardViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "resultCard", for: indexPath) as! OwnedCardViewCell
         let card = self.cards[indexPath.item]
         cell.load(card: card)
         

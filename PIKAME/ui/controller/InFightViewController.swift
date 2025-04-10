@@ -205,6 +205,7 @@ class InFightViewController: UIViewController {
     }
     
     func endFight(){
+        if !inFight {return}
         timer?.invalidate()
         continueButton.isHidden = false
         continueButton.isEnabled = true
