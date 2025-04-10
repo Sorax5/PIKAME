@@ -61,22 +61,18 @@ class InFightViewController: UIViewController {
     func getClickDamage() -> Int {
         var additionnalDamage = 0
         if let heros = player.object {
-            additionnalDamage = herosDamage(heros: heros)
+            additionnalDamage = heros.getDamage()
         }
         return 1+additionnalDamage
-    }
-    
-    func herosDamage(heros : OwnedCard) -> Int {
-        return Int(heros.getValue()) + (heros.level*(heros.getRarity()+1))
     }
     
     func getDpsDamage() -> Int {
         var damage = 0
         if let firstHero = player.firstHero {
-            damage += herosDamage(heros: firstHero)
+            damage += firstHero.getDamage()
         }
         if let secondHero = player.secondHero {
-            damage += herosDamage(heros: secondHero)
+            damage += secondHero.getDamage()
         }
         return damage
     }
