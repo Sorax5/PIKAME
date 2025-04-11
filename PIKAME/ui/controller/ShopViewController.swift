@@ -15,6 +15,9 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @IBOutlet weak var buyableCardsCollection: UICollectionView!
     
+    @IBAction func rembobiner (_ for: UIStoryboardSegue){
+    }
+    
     private var ownedCardService: OwnedCardService?
     private var cardService : CardService?
     private var buyableCards: [OwnedCard] = []
@@ -53,6 +56,16 @@ class ShopViewController: UIViewController, UICollectionViewDataSource, UICollec
         buyableCardsCollection.backgroundColor = .none
         
         chooseRandomCard()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let player = Application.INSTANCE.getPlayer() {
+            self.updateMoney(player: player)
+            self.updateBooster(player: player)
+            self.updateReroll(player: player)
+        }
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
