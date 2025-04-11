@@ -12,6 +12,7 @@ let cellName = "OwnedCardViewCell"
 /// Permet d'afficher la liste de carte que l'utilisateur possède
 class OwnedCardsCollectionViewController: UICollectionViewController {
     
+    @IBOutlet weak var errorLabel: UILabel!
     private var ownedCardService : OwnedCardService?
 
     override func viewDidLoad() {
@@ -21,12 +22,16 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
         let nibCell = UINib(nibName: cellName, bundle: nil)
         collectionView.register(nibCell, forCellWithReuseIdentifier: cellName)
         
+        errorLabel.isHidden = true
+        
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        errorLabel.isHidden = ownedCardService!.getAll().count != 0
         
         self.collectionView.reloadData()
     }
@@ -48,7 +53,6 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
     
     /// fais une transition vers la vue ou on a les détails de la carte
     @objc func onCardClick(sender: UITapGestureRecognizer){
-        print("card click")
         if let cell = sender.view as? OwnedCardViewCell {
             let ownedCard = cell.getCard()
             self.performSegue(withIdentifier: "OwnedCardCollectionToOwnedCardData", sender: ownedCard)

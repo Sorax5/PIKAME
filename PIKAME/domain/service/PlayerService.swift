@@ -37,7 +37,6 @@ class PlayerService {
             do {
                 let decoder = JSONDecoder()
                 var dto = try decoder.decode(PlayerDTO.self, from: data)
-                dto.firstHero = 0
                 player = Player(dto: dto)
                 
                 if let firstHeroId = dto.firstHero, let firstHeroCard = OwnedCardService?.getOwnedCard(by: firstHeroId) {
