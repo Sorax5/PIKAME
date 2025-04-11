@@ -24,8 +24,6 @@ class BoosterResultViewController: UIViewController, UICollectionViewDataSource,
         
         self.resultCollection.delegate = self
         self.resultCollection.dataSource = self
-        
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -35,7 +33,11 @@ class BoosterResultViewController: UIViewController, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "resultCard", for: indexPath) as! OwnedCardViewCell
         let card = self.cards[indexPath.item]
-        cell.load(card: card)
+        
+        if let ownedCard = Application.INSTANCE.getOwnedCardService().getByUniqueId(id: card.getUniqueId()){
+            cell.load(card: ownedCard)
+            
+        }
         
         return cell
     }

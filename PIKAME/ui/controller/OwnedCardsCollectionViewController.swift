@@ -7,6 +7,7 @@
 
 import UIKit
 
+let cellName = "OwnedCardViewCell"
 
 /// Permet d'afficher la liste de carte que l'utilisateur possède
 class OwnedCardsCollectionViewController: UICollectionViewController {
@@ -17,8 +18,8 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         self.ownedCardService = Application.INSTANCE.getOwnedCardService()
         
-        let nibCell = UINib(nibName: "OwnedCardViewCell", bundle: nil)
-        collectionView.register(nibCell, forCellWithReuseIdentifier: "ownedcard")
+        let nibCell = UINib(nibName: cellName, bundle: nil)
+        collectionView.register(nibCell, forCellWithReuseIdentifier: cellName)
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -37,7 +38,7 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
     
     /// Ajoute une action quand on clique sur la cell de la carte
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ownedcard", for: indexPath) as! OwnedCardViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName, for: indexPath) as! OwnedCardViewCell
         if let card = ownedCardService!.getByIndex(index: indexPath){
             cell.load(card: card)
             cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onCardClick)))
@@ -47,7 +48,8 @@ class OwnedCardsCollectionViewController: UICollectionViewController {
     
     /// fais une transition vers la vue ou on a les détails de la carte
     @objc func onCardClick(sender: UITapGestureRecognizer){
-        if let cell = sender.view as? CardViewCell {
+        print("card click")
+        if let cell = sender.view as? OwnedCardViewCell {
             let ownedCard = cell.getCard()
             self.performSegue(withIdentifier: "OwnedCardCollectionToOwnedCardData", sender: ownedCard)
         }
